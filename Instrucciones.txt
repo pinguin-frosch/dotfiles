@@ -1,5 +1,0 @@
-Great trick. much better than bare git repo.
-Just one thing. stow doesn't assume HOME ( ~) directory as the target directory ( by default it is the parent of the current directory ), can be changed with --target flag.
-eg: dotfiles in ~/Documents/dotrcs ( and this is my pwd )
-stow neovim  # would symlink things relative to ~/Documents.
-stow --target=/home/gabriel neovim  # will symlink relative to HOME (~).
