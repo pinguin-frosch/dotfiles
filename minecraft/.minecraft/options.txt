@@ -29,7 +29,7 @@ simulationDistance:8
 entityDistanceScaling:1.0
 guiScale:0
 particles:1
-maxFps:140
+maxFps:260
 difficulty:2
 graphicsMode:1
 ao:1
@@ -68,7 +68,7 @@ rawMouseInput:true
 glDebugVerbosity:1
 skipMultiplayerWarning:false
 hideMatchedNames:true
-joinedFirstServer:false
+joinedFirstServer:true
 hideBundleTutorial:false
 syncChunkWrites:false
 showAutosaveIndicator:true
@@ -107,6 +107,7 @@ key_key.hotbar.6:key.keyboard.f
 key_key.hotbar.7:key.keyboard.x
 key_key.hotbar.8:key.keyboard.c
 key_key.hotbar.9:key.keyboard.v
+key_of.key.zoom:key.keyboard.unknown
 soundCategory_master:1.0
 soundCategory_music:1.0
 soundCategory_record:1.0
