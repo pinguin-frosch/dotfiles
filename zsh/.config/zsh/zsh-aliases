@@ -5,3 +5,5 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 alias ls="ls --color=auto"
 alias gu="git status -u"
 alias g="git status"
+alias dt="bash /home/gabriel/Programación/projects/light_dark/light_dark.sh -d"
+alias lt="bash /home/gabriel/Programación/projects/light_dark/light_dark.sh -l"
