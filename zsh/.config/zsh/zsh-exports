@@ -13,3 +13,6 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 # PATH
 export PATH=$PATH:/home/gabriel/.local/bin
+
+# Node inacap program
+export INACAP_PATH=/home/gabriel/Programación/inacap
