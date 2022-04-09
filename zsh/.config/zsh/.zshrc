@@ -7,7 +7,7 @@ setopt appendhistory
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
-stty stop undef		# Disable ctrl-s to freeze terminal.
+stty stop undef # Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 
 # beeping is annoying
@@ -30,6 +30,14 @@ zle -N down-line-or-beginning-search
 
 # Colors
 autoload -Uz colors && colors
+
+# SSH
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > ~/.ssh-agent-thing
+fi
+if [[ "$SSH_AGENT_PID" == "" ]]; then
+    eval "$(<~/.ssh-agent-thing)" > /dev/null
+fi
 
 # Useful Functions
 source "$ZDOTDIR/zsh-functions"
