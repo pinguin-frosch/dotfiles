@@ -3,3 +3,5 @@
 	name = Gabriel Barrientos
 [init]
 	defaultBranch = main
+[core]
+	editor = code --wait
