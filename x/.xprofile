@@ -1,0 +1,2 @@
+eval "$(ssh-agent -s)"
+export ZDOTDIR=$HOME/.config/zsh
