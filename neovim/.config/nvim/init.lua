@@ -1,25 +1,14 @@
-require('plugins')
-require('onedarkpro').load()
-require('nvim-lsp-installer').setup {}
-require('nvim-tree').setup {}
-require('nvim-treesitter.configs').setup {
-    ensure_installed = 'all',
-    ignore_install = { 'phpdoc' },
-    sync_install = false,
-    highlight = {
-        enable = true,
-        disable = { 'html' }
-    },
-    indent = { enable = true }
-}
-require('telescope').setup {}
-require('nvim-autopairs').setup {}
-require('bufferline').setup {}
-require('Comment').setup {}
-require('surround').setup {
-    mappings_style = "surround"
-}
-require('gitsigns').setup()
+require('pinguin-frosch.plugins')
+require('pinguin-frosch.colorscheme')
+require('pinguin-frosch.gitsigns')
+require('pinguin-frosch.surround')
+require('pinguin-frosch.comment')
+require('pinguin-frosch.telescope')
+require('pinguin-frosch.bufferline')
+require('pinguin-frosch.autopairs')
+require('pinguin-frosch.nvim-tree')
+require('pinguin-frosch.treesitter')
+require('pinguin-frosch.lsp-installer')
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
@@ -28,6 +17,7 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.wrap = true
 vim.opt.list = true
 vim.opt.listchars = { space = '·', tab = '→ ' }
@@ -35,19 +25,30 @@ vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
+vim.cmd [[
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+augroup END
+]]
+
 local opts = { noremap = true, silent = true }
+-- Bufferline
 vim.keymap.set("n", "<M-k>", ":BufferLineCycleNext<CR>", opts)
 vim.keymap.set("n", "<M-j>", ":BufferLineCyclePrev<CR>", opts)
 vim.keymap.set("n", "<M-K>", ":BufferLineMoveNext<CR>", opts)
 vim.keymap.set("n", "<M-J>", ":BufferLineMovePrev<CR>", opts)
 vim.keymap.set("n", "<Leader>q", ":bdelete! %<CR>", opts)
-vim.keymap.set("n", "<Esc>", ":nohl<CR>", opts)
+-- Nvim-tree
 vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
+-- Telescope
+vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>", opts)
+-- Neovim
+vim.keymap.set("n", "<Esc>", ":nohl<CR>", opts)
 vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
 vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>", opts)
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
@@ -77,7 +78,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
 end
 
-local servers = { 'sumneko_lua', 'html', 'pyright', 'clangd', 'tsserver', 'sqls', 'cssls' }
+local servers = { 'sumneko_lua', 'html', 'pyright', 'clangd', 'tsserver', 'sqls', 'cssls', 'gopls', 'jdtls' }
 for _, lsp in pairs(servers) do
     if lsp == 'sumneko_lua' then
         settings = {
@@ -91,8 +92,9 @@ for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         settings = settings,
         capabilities = capabilities,
-        on_attach = on_attach,
-        flags = {
+        -- TODO: Corregir esto
+        root_dir = function() return vim.loop.cwd() end,
+        on_attach = on_attach, flags = {
             debounce_text_changes = 150,
         }
     }
