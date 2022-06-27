@@ -9,9 +9,9 @@ font:
   size: 12
 
 schemes:
-  one_half_light: &light
+  onelight: &light
     primary:
-      background: '0xfafafa'
+      background: '0xffffff'
       foreground: '0x383a42'
     normal:
       black: '0x383a42'
@@ -31,9 +31,9 @@ schemes:
       magenta: '0xa626a4'
       cyan: '0x0997b3'
       white: '0xfafafa'
-  one_half_dark: &dark
+  onedark_dark: &dark
     primary:
-      background: '0x282c34'
+      background: '0x000000'
       foreground: '0xdcdfe4'
     normal:
       black: '0x282c34'
@@ -54,7 +54,7 @@ schemes:
       cyan: '0x56b6c2'
       white: '0xdcdfe4'
 
-colors: *light
+colors: *dark
 
 key_bindings:
   - { key: F11, action: ToggleFullScreen }
