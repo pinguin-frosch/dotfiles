@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
 
     -- Theme
     use 'olimorris/onedarkpro.nvim'
+    use 'folke/tokyonight.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
