@@ -4,20 +4,16 @@ return require('packer').startup(function(use)
 
     -- Theme
     use 'olimorris/onedarkpro.nvim'
-    use 'folke/tokyonight.nvim'
 
-    -- LSP
+    -- LSP, completions and snippets
     use 'neovim/nvim-lspconfig'
-    use "williamboman/nvim-lsp-installer"
-
-    -- Completions
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
-
-    -- Snippets
+    use 'hrsh7th/cmp-nvim-lua'
     use 'L3MON4D3/LuaSnip'
+    use 'onsails/lspkind.nvim'
 
     -- File explorer
     use 'kyazdani42/nvim-tree.lua'
@@ -39,13 +35,10 @@ return require('packer').startup(function(use)
     }
 
     -- Bufferline
-    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use {'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Comment
     use 'numToStr/Comment.nvim'
-
-    -- Neovim surround
-    use 'ur4ltz/surround.nvim'
 
     -- Gitsigns
     use 'lewis6991/gitsigns.nvim'
