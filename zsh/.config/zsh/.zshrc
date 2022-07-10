@@ -1,3 +1,16 @@
+# Exports de aplicaciones
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
+export GOPATH=$XDG_DATA_HOME/go
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export LESSHISTFILE=$XDG_CACHE_HOME/less/history
+export MYSQL_HISTFILE=$XDG_DATA_HOME/mysql_history
+export PYTHONSTARTUP=${XDG_CONFIG_HOME}/python/pythonrc
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
 # Opciones básicas
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=1000
@@ -43,7 +56,7 @@ echo -ne '\e[5 q'
 preexec() { echo -ne '\e[5 q' ;}
 
 # Exports
-export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/Programación/scripts
+export PATH=$PATH:$HOME/.local/bin:$GOPATH/bin:$HOME/Programación/scripts
 export EDITOR=nvim
 
 # Aliases
