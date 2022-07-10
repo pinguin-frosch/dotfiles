@@ -67,7 +67,7 @@ schemes:
       text: CellForeground
       background: '0x3e4452'
 
-colors: *dark
+colors: *light
 
 key_bindings:
   - { key: F11, action: ToggleFullScreen }
