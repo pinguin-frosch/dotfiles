@@ -42,4 +42,10 @@ return require('packer').startup(function(use)
 
     -- Gitsigns
     use 'lewis6991/gitsigns.nvim'
+
+    -- Rainbow parenthesis
+    use 'p00f/nvim-ts-rainbow'
+
+    -- Nvim surround
+    use 'kylechui/nvim-surround'
 end)

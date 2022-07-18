@@ -1,10 +1,11 @@
 local cmp = require('cmp')
+local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -31,14 +32,14 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'nvim_lua' },
-        { name = 'buffer' },
+        { name = 'buffer', keyword_length = 4 },
         { name = 'path' },
     }),
 })
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<CR>', bufopts)
@@ -60,9 +61,18 @@ local on_attach = function(_, bufnr)
     end, bufopts)
     vim.keymap.set('n', '<Leader><Leader>dh', vim.diagnostic.hide, bufopts)
     vim.keymap.set('n', '<Leader><Leader>ds', vim.diagnostic.show, bufopts)
+    if client.resolved_capabilities.document_highlight then
+        vim.cmd [[
+            augroup document_highlight
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]]
+    end
 end
 
-local servers = { 'pyright', 'tsserver', 'gopls' }
+local servers = { 'pyright', 'tsserver', 'gopls', 'html', 'cssls', 'jsonls' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         capabilities = capabilities,
@@ -85,3 +95,9 @@ require('lspconfig').sumneko_lua.setup {
         debounce_text_changes = 150,
     }
 }
+
+require('lspconfig').sqls.setup({
+    on_attach = function(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
+    end
+})
