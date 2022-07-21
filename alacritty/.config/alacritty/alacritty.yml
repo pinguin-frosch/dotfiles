@@ -1,12 +1,15 @@
 window.opacity: 1
 font:
   bold:
-    family: CascadiaMonoLight
+    family: mononoki Nerd Font Mono
+    style: Bold
   italic:
-    family: CascadiaMonoLight
+    family: mononoki Nerd Font Mono
+    style: Italic
   normal:
-    family: CascadiaMonoLight
-  size: 12
+    family: mononoki Nerd Font Mono
+    style: Regular
+  size: 14
 
 schemes:
   onelight: &light
