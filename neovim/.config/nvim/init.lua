@@ -12,6 +12,8 @@ vim.opt.relativenumber = true
 vim.opt.colorcolumn = '80'
 vim.opt.number = true
 vim.opt.list = true
+vim.opt.laststatus = 0
+vim.opt.background = 'light'
 vim.opt.listchars = { space = '·', tab = '→ ' }
 vim.opt.termguicolors = true
 vim.g.mapleader = ' '

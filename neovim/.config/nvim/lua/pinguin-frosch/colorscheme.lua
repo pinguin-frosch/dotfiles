@@ -11,5 +11,4 @@ onedarkpro.setup({
 onedarkpro.load()
 
 local opts = { silent = true, noremap = true }
-vim.keymap.set('n', '<Leader><Leader>td', ':set background=dark<CR>', opts)
-vim.keymap.set('n', '<Leader><Leader>tl', ':set background=light<CR>', opts)
+vim.keymap.set('n', '<Leader><Leader>t', ':source $MYVIMRC<CR>', opts)
