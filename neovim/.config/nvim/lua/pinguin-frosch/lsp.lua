@@ -10,8 +10,6 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = true })
@@ -72,7 +70,7 @@ local on_attach = function(client, bufnr)
     end
 end
 
-local servers = { 'pyright', 'tsserver', 'gopls', 'html', 'cssls', 'jsonls' }
+local servers = { 'pyright', 'tsserver', 'gopls', 'html', 'cssls', 'jsonls', 'yamlls' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         capabilities = capabilities,
@@ -97,7 +95,6 @@ require('lspconfig').sumneko_lua.setup {
 }
 
 require('lspconfig').sqls.setup({
-    on_attach = function(client, bufnr)
-        require('sqls').on_attach(client, bufnr)
-    end
+    on_attach = on_attach,
+    cmd = { '/home/gabriel/.local/share/go/bin/sqls' }
 })
