@@ -6,7 +6,7 @@ setopt nomatch
 unsetopt autocd beep extendedglob
 zstyle :compinstall filename '${ZDOTDIR:-$HOME}/.zshrc'
 zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit
 compinit
 
@@ -49,8 +49,8 @@ export EDITOR=nvim
 # Aliases
 alias ls="ls --color=auto"
 alias g="git status"
-alias inacapg="node $HOME/Programación/inacapi/index.js gabriel"
-alias inacapc="node $HOME/Programación/inacapi/index.js charlotte"
+alias inacapg="node $HOME/Programación/inacapi/index.js 'Gabriel Barrientos'"
+alias inacapc="node $HOME/Programación/inacapi/index.js 'Charlotte Rodriguez'"
 alias zshupdate="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 
 # Plugins
