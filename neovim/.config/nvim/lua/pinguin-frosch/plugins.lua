@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lua'
     use 'L3MON4D3/LuaSnip'
     use 'onsails/lspkind.nvim'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
 
     -- File explorer
     use 'kyazdani42/nvim-tree.lua'
@@ -29,10 +31,7 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
 
     -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+    use 'nvim-treesitter/nvim-treesitter'
 
     -- Bufferline
     use {'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons'}

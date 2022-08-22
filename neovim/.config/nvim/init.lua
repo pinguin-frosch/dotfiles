@@ -9,11 +9,12 @@ vim.opt.swapfile = false
 vim.opt.smartindent = true
 vim.opt.backup = false
 vim.opt.relativenumber = true
+vim.opt.signcolumn = 'auto:2'
 vim.opt.colorcolumn = '80'
 vim.opt.number = true
 vim.opt.list = true
 vim.opt.laststatus = 0
-vim.opt.background = 'light'
+vim.opt.background = 'dark'
 vim.opt.wrap = false
 vim.opt.listchars = { space = '·', tab = '→ ' }
 vim.opt.termguicolors = true
@@ -32,6 +33,7 @@ au TextYankPost * silent! lua vim.highlight.on_yank({higroup='Visual', timeout=2
 augroup END
 ]]
 
+require('pinguin-frosch.plugins')
 require('pinguin-frosch.colorscheme')
 require('pinguin-frosch.autopairs')
 require('pinguin-frosch.comment')
@@ -42,4 +44,4 @@ require('pinguin-frosch.bufferline')
 require('pinguin-frosch.telescope')
 require('pinguin-frosch.treesitter')
 require('pinguin-frosch.lsp')
-require('pinguin-frosch.plugins')
+require('pinguin-frosch.mason')

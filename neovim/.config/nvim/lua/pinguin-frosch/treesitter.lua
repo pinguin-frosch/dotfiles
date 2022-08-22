@@ -4,9 +4,10 @@ require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true
     },
-    indent = {
-        enable = true
-    },
+    -- indent = {
+    --     enable = true,
+    --     disable = { 'python', 'html' }
+    -- },
     rainbow = {
         enable = true,
         extended_mode = true

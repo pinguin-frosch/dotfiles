@@ -33,6 +33,9 @@ cmp.setup({
         { name = 'buffer', keyword_length = 4 },
         { name = 'path' },
     }),
+    completion = {
+        completeopt = 'menu,menuone,noinsert',
+    },
 })
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -70,12 +73,13 @@ local on_attach = function(client, bufnr)
     end
 end
 
-local servers = { 'pyright', 'tsserver', 'gopls', 'html', 'cssls', 'jsonls', 'yamlls' }
+local servers = { 'pyright', 'tsserver', 'gopls', 'html', 'cssls', 'jsonls', 'yamlls', 'bashls', 'sqls', 'emmet_ls', 'jdtls' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         capabilities = capabilities,
         root_dir = function() return vim.loop.cwd() end,
-        on_attach = on_attach, flags = {
+        on_attach = on_attach,
+        flags = {
             debounce_text_changes = 150,
         }
     }
@@ -93,8 +97,3 @@ require('lspconfig').sumneko_lua.setup {
         debounce_text_changes = 150,
     }
 }
-
-require('lspconfig').sqls.setup({
-    on_attach = on_attach,
-    cmd = { '/home/gabriel/.local/share/go/bin/sqls' }
-})
