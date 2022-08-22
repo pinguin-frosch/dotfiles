@@ -1,4 +1,5 @@
-window.opacity: 1
+window:
+  opacity: 1
 font:
   bold:
     family: mononoki Nerd Font Mono
@@ -70,7 +71,7 @@ schemes:
       text: CellForeground
       background: '0x3e4452'
 
-colors: *light
+colors: *dark
 
 key_bindings:
   - { key: F11, action: ToggleFullScreen }
