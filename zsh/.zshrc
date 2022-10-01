@@ -48,9 +48,12 @@ export EDITOR=nvim
 
 # Aliases
 alias ls="ls --color=auto"
+alias grep="grep --color=auto"
 alias g="git status"
-alias inacapg="node $HOME/Programación/inacapi/index.js gabriel"
-alias inacapc="node $HOME/Programación/inacapi/index.js charlotte"
+alias ig="node $HOME/Programación/inacapi/index.js -c gabriel -s"
+alias ic="node $HOME/Programación/inacapi/index.js -c charlotte -s"
+alias i="ig 4 -r; ic 4 -r"
+alias reload="source ~/.zshrc"
 alias zshupdate="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 
 # Plugins
