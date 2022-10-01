@@ -64,6 +64,14 @@ export LIBRARY_PATH=/usr/local/lib
 export C_INCLUDE_PATH=/usr/local/include
 export LD_LIBRARY_PATH=/usr/local/lib
 
+# Funciones
+function gamefiles() {
+    cd ~/Juegos/saves > /dev/null
+    git add . /dev/null
+    git commit -m "$(date +%F)" /dev/null
+    cd - /dev/null
+}
+
 # Plugins
 github_plugins=(
   zsh-users/zsh-autosuggestions
