@@ -1,0 +1,14 @@
+" Opciones
+set visualbell
+set noerrorbells
+set clipboard+=unnamedplus
+let g:highlightedyank_highlight_color = "rgba(250, 240, 170, 127)"
+
+" Mappings
+sethandler <C-p> n:ide
+
+" Plugins
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'machakann/vim-highlightedyank'
+Plug 'kana/vim-textobj-entire'
