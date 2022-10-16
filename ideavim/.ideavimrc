@@ -6,6 +6,7 @@ let g:highlightedyank_highlight_color = "rgba(250, 240, 170, 127)"
 
 " Mappings
 sethandler <C-p> n:ide
+sethandler <C-v> i:ide
 
 " Plugins
 Plug 'tpope/vim-commentary'
