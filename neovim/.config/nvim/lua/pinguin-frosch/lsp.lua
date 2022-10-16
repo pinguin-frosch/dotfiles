@@ -42,38 +42,27 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gd', ':Telescope lsp_definitions<CR>', bufopts)
-    vim.keymap.set('n', 'gr', ':Telescope lsp_references<CR>', bufopts)
-    vim.keymap.set('n', 'gi', ':Telescope lsp_implementations<CR>', bufopts)
-    vim.keymap.set('n', '<Leader>D', ':Telescope lsp_type_definitions<CR>', bufopts)
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<Leader>c', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<Leader>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, bufopts)
+    vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<Leader>df', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '<Leader>db', vim.diagnostic.goto_prev, bufopts)
-    vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<Leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
     vim.keymap.set('n', '<Leader><Leader>dh', vim.diagnostic.hide, bufopts)
     vim.keymap.set('n', '<Leader><Leader>ds', vim.diagnostic.show, bufopts)
-    if client.resolved_capabilities.document_highlight then
-        vim.cmd [[
-            augroup document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]]
-    end
 end
 
-local servers = { 'pyright', 'tsserver', 'gopls', 'html', 'cssls', 'jsonls', 'yamlls', 'bashls', 'sqls', 'emmet_ls', 'jdtls' }
+local servers = { 'pyright', 'tsserver', 'gopls', 'html', 'cssls', 'jsonls', 'yamlls', 'bashls', 'sqls', 'emmet_ls', 'jdtls', 'clangd' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         capabilities = capabilities,
@@ -93,7 +82,8 @@ require('lspconfig').sumneko_lua.setup {
             }
         },
     },
-    on_attach = on_attach, flags = {
+    on_attach = on_attach,
+    flags = {
         debounce_text_changes = 150,
     }
 }

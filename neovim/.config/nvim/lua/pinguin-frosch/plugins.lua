@@ -30,8 +30,10 @@ return require('packer').startup(function(use)
     -- Autopairs
     use 'windwp/nvim-autopairs'
 
-    -- Treesitter
+    -- Treesitter and plugins
     use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/nvim-treesitter-refactor'
+    use 'p00f/nvim-ts-rainbow'
 
     -- Bufferline
     use {'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons'}
@@ -41,9 +43,6 @@ return require('packer').startup(function(use)
 
     -- Gitsigns
     use 'lewis6991/gitsigns.nvim'
-
-    -- Rainbow parenthesis
-    use 'p00f/nvim-ts-rainbow'
 
     -- Nvim surround
     use 'kylechui/nvim-surround'

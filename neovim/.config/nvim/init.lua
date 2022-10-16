@@ -1,3 +1,4 @@
+-- Opciones
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.mouse = 'a'
 vim.opt.updatetime = 50
@@ -22,26 +23,75 @@ vim.g.mapleader = ' '
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.foldmethod = 'manual'
 
+require('pinguin-frosch.plugins')
+
+-- Mappings
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<Esc>', ':nohl<CR>', opts)
 vim.keymap.set('n', '<Leader><Leader>s', ':source %<CR>', opts)
+vim.keymap.set('n', '<Leader><Leader>t', ':source $MYVIMRC<CR>', opts)
+vim.keymap.set('n', '<Leader>gn', ':Gitsigns next_hunk<CR>', opts)
+vim.keymap.set('n', '<Leader>gr', ':Gitsigns reset_hunk<CR>', opts)
+vim.keymap.set('n', '<Leader>e', ':NvimTreeToggle<CR>', opts)
+vim.keymap.set('n', '<M-k>', ':BufferLineCycleNext<CR>', opts)
+vim.keymap.set('n', '<M-j>', ':BufferLineCyclePrev<CR>', opts)
+vim.keymap.set('n', '<M-K>', ':BufferLineMoveNext<CR>', opts)
+vim.keymap.set('n', '<M-J>', ':BufferLineMovePrev<CR>', opts)
+vim.keymap.set('n', '<Leader>q', ':bdelete! %<CR>', opts)
+vim.keymap.set('n', '<C-p>', ':Telescope find_files<CR>', opts)
+vim.keymap.set('n', '<Leader><Leader>l', ':Telescope filetypes<CR>', { noremap = true })
+vim.keymap.set('n', '<Leader><Leader>h', ':TSBufToggle highlight<CR>', opts)
 
-vim.cmd [[
-augroup highlight_yank
-autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup='Visual', timeout=200})
-augroup END
-]]
+-- Plugins sin configurar
+require('nvim-autopairs').setup {}
+require('Comment').setup()
+require('nvim-surround').setup()
+require('gitsigns').setup()
+require('nvim-tree').setup {}
+require('telescope').setup()
+require('mason').setup()
+require('mason-lspconfig').setup()
 
-require('pinguin-frosch.plugins')
-require('pinguin-frosch.colorscheme')
-require('pinguin-frosch.autopairs')
-require('pinguin-frosch.comment')
-require('pinguin-frosch.gitsigns')
-require('pinguin-frosch.nvim-surround')
-require('pinguin-frosch.nvim-tree')
-require('pinguin-frosch.bufferline')
-require('pinguin-frosch.telescope')
-require('pinguin-frosch.treesitter')
+-- Tema
+local onedarkpro = require('onedarkpro')
+onedarkpro.setup({
+    theme = function()
+        if vim.o.background == 'dark' then
+            return 'onedark'
+        else
+            return 'onelight'
+        end
+    end,
+})
+onedarkpro.load()
+
+-- Bufferline
+require('bufferline').setup({
+    options = {
+        offsets = {
+            { filetype = 'NvimTree', text = 'Explorador', text_align = 'center' }
+        }
+    }
+})
+
+-- Treesitter
+require('nvim-treesitter.configs').setup {
+    ensure_installed = 'all',
+    ignore_install = { 'phpdoc' },
+    sync_install = false,
+    highlight = {
+        enable = true
+    },
+    rainbow = {
+        enable = true,
+        extended_mode = true
+    },
+    refactor = {
+        highlight_definitions = {
+            enable = true,
+            clear_on_cursor_move = true
+        }
+    }
+}
+
 require('pinguin-frosch.lsp')
-require('pinguin-frosch.mason')
