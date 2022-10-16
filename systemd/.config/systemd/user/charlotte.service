@@ -1,0 +1,10 @@
+[Unit]
+Description=Obtiene notas de inacap (Charlotte)
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/Programación/inacapi
+ExecStart=/usr/bin/node index.js -r -c charlotte -s 4
