@@ -1,5 +1,8 @@
 window:
   opacity: 1
+  startup_mode: Maximized
+  dynamic_title: false
+
 font:
   bold:
     family: mononoki Nerd Font Mono
@@ -41,7 +44,6 @@ schemes:
     selection:
       text: CellForeground
       background: '0xbfceff'
-
   onedark: &dark
     primary:
       background: '0x282c34'
