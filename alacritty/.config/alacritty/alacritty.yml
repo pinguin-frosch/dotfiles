@@ -5,15 +5,15 @@ window:
 
 font:
   bold:
-    family: mononoki Nerd Font Mono
+    family: Agave Nerd Font
     style: Bold
   italic:
-    family: mononoki Nerd Font Mono
+    family: Agave Nerd Font
     style: Italic
   normal:
-    family: mononoki Nerd Font Mono
+    family: Agave Nerd Font
     style: Regular
-  size: 14
+  size: 16
 
 schemes:
   onelight: &light
