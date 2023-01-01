@@ -8,6 +8,7 @@ vim.opt.swapfile = false
 vim.opt.smartindent = true
 vim.opt.relativenumber = true
 vim.opt.number = true
+vim.keymap.set('n', '<Esc>', ':nohl<CR>', opts)
 
 if vim.g.vscode then
     require('pinguin-frosch.plugins')
@@ -34,7 +35,6 @@ else
 
     -- Mappings
     local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', '<Esc>', ':nohl<CR>', opts)
     vim.keymap.set('n', '<Leader><Leader>s', ':source %<CR>', opts)
     vim.keymap.set('n', '<Leader><Leader>t', ':source $MYVIMRC<CR>', opts)
     vim.keymap.set('n', '<Leader>gn', ':Gitsigns next_hunk<CR>', opts)
