@@ -5,15 +5,15 @@ window:
 
 font:
   bold:
-    family: Agave Nerd Font
+    family: FantasqueSansMono Nerd Font
     style: Bold
   italic:
-    family: Agave Nerd Font
+    family: FantasqueSansMono Nerd Font
     style: Italic
   normal:
-    family: Agave Nerd Font
+    family: FantasqueSansMono Nerd Font
     style: Regular
-  size: 16
+  size: 15
 
 schemes:
   onelight: &light
