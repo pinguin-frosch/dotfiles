@@ -20,8 +20,10 @@ zstyle ':vcs_info:*' enable git
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-zstyle ':vcs_info:*' check-for-changes false
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[magenta]%}%b%{$fg[blue]%})"
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr ' ✗'
+zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}git:(%{$fg[red]%}%b%{$fg[blue]%})%{$fg[yellow]%}%u"
+zstyle ':vcs_info:git:*' actionformats " %{$fg[blue]%}git:(%{$fg[red]%}%b%{$fg[blue]%})%{$fg[magenta]%}[%a]%{$fg[yellow]%}%u"
 
 # Modo vim
 bindkey -v
