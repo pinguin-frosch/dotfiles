@@ -58,10 +58,10 @@ alias zshupdate="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.
 # Funciones
 function gamefiles() {
   cd ~/Juegos/saves > /dev/null
-  git add . /dev/null
+  git add . > /dev/null
   git commit -m "$(date +%F\ %T)" > /dev/null
   git push
-  cd - /dev/null
+  cd - > /dev/null
 }
 
 function passwords() {
