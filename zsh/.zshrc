@@ -30,15 +30,15 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
 function zle-keymap-select () {
-    case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;
-        viins|main) echo -ne '\e[5 q';;
-    esac
+  case $KEYMAP in
+    vicmd) echo -ne '\e[1 q';;
+    viins|main) echo -ne '\e[5 q';;
+  esac
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins
-    echo -ne "\e[5 q"
+  zle -K viins
+  echo -ne "\e[5 q"
 }
 zle -N zle-line-init
 echo -ne '\e[5 q'
@@ -52,26 +52,24 @@ export EDITOR=nvim
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias g="git status"
-alias ig="node $HOME/Programación/inacapi/index.js -c gabriel -s"
-alias ic="node $HOME/Programación/inacapi/index.js -c charlotte -s"
-alias i="ig 4 -r; ic 4 -r"
 alias reload="source ~/.zshrc"
 alias zshupdate="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 
-# Cs50
-export CC="clang"
-export CFLAGS="-fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow"
-export LDLIBS="-lcrypt -lcs50 -lm"
-export LIBRARY_PATH=/usr/local/lib
-export C_INCLUDE_PATH=/usr/local/include
-export LD_LIBRARY_PATH=/usr/local/lib
-
 # Funciones
 function gamefiles() {
-    cd ~/Juegos/saves > /dev/null
-    git add . /dev/null
-    git commit -m "$(date +%F)" /dev/null
-    cd - /dev/null
+  cd ~/Juegos/saves > /dev/null
+  git add . /dev/null
+  git commit -m "$(date +%F\ %T)" > /dev/null
+  git push
+  cd - /dev/null
+}
+
+function passwords() {
+  cd ~/Programación/.passwords > /dev/null
+  git add . > /dev/null
+  git commit -m "$(date +%F\ %T)" > /dev/null
+  git push
+  cd - > /dev/null
 }
 
 # Plugins
