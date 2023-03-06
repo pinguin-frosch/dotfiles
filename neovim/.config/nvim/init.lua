@@ -2,20 +2,109 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Color del fondo del tema
+vim.o.background = 'dark'
+
+-- Atajo para cambiar alternar el color del fondo
+vim.keymap.set('n', '<leader>tb', function()
+  if (vim.o.background == 'dark') then
+    vim.o.background = 'light'
+  else
+    vim.o.background = 'dark'
+  end
+end, { desc = '[T]oggle [B]ackground color' })
+
+-- Ocultar barra de comandos
+vim.o.cmdheight = 1
+
+-- Atajo para activar o desactivar la barra de comandos
+local function toggle_command_line()
+  if (vim.o.cmdheight == 1) then
+    vim.o.cmdheight = 0
+  else
+    vim.o.cmdheight = 1
+  end
+end
+vim.keymap.set('n', '<leader>tc', function()
+  toggle_command_line()
+end, { desc = '[T]oggle [C]ommand line' })
+
+-- Activar barra de estado
+vim.o.laststatus = 2
+
+-- Atajo para activar o desactivar la barra de estado
+local function toggle_status_bar()
+  if (vim.o.laststatus == 2) then
+    vim.o.laststatus = 0
+  else
+    vim.o.laststatus = 2
+  end
+end
+vim.keymap.set('n', '<leader>ts', function()
+  toggle_status_bar()
+end, { desc = '[T]oggle [S]tatus bar' })
+
+-- No cortar las líneas por defecto
+vim.o.wrap = false
+
+-- Atajo para activar o desactivar word wrap
+vim.keymap.set('n', '<leader>tw', function()
+  vim.o.wrap = not vim.o.wrap
+end, { desc = '[T]oggle word [W]rap' })
+
 -- Destacar al buscar
 vim.o.hlsearch = true
 
 -- Atajo para desactivar el coloreado después de buscar
 vim.keymap.set('n', '<Esc>', function()
   vim.cmd('nohl')
-end, { silent = true })
+end, { desc = 'Hide highlighting after searching', silent = true })
 
 -- Usar números relativos
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Ocultar barra de comandos
-vim.o.cmdheight = 0
+-- Atajo para activar o desactivar los números
+local function toggle_number_line()
+  vim.wo.number = not vim.wo.number
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end
+vim.keymap.set('n', '<leader>tn', function()
+  toggle_number_line()
+end, { desc = '[T]oggle line [N]umbers' })
+
+-- Activar la columna de símbolos
+vim.wo.signcolumn = 'yes'
+
+-- Atajo para activar o desactivar la barra de íconos (símbolos)
+local function toggle_sign_column()
+  if (vim.wo.signcolumn == 'yes') then
+    vim.wo.signcolumn = 'no'
+  else
+    vim.wo.signcolumn = 'yes'
+  end
+end
+vim.keymap.set('n', '<leader>ti', function()
+  toggle_sign_column()
+end, { desc = '[T]oggle s[I]gn column' })
+
+-- Atajo para desactivar todos los elementos de la pantalla
+vim.keymap.set('n', '<leader>tz', function()
+  toggle_command_line()
+  toggle_status_bar()
+  toggle_number_line()
+  toggle_sign_column()
+end, { desc = '[T]oggle [Z]en mode' })
+
+-- Mostrar íconos para espacios, tabs, entre otros
+vim.o.list = true
+vim.o.listchars = 'tab:→ ,trail:·,space:·'
+
+-- Configurar tamaño de tab en espacios
+vim.o.tabstop = 4
+
+-- Configurar el tamaño de espacios
+vim.o.shiftwidth = 4
 
 -- Activar el mouse
 vim.o.mouse = 'a'
@@ -33,55 +122,13 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Activar la columna de símbolos
-vim.wo.signcolumn = 'yes'
-
 -- Disminuir el tiempo de actualización
 vim.o.updatetime = 300
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
--- Mejorar la experiencia de autocompletado
-vim.o.completeopt = 'menuone,noselect'
-
 -- Activar colores de terminal
 vim.o.termguicolors = true
-
--- Función para cambiar el color del fondo
-local function change_background(background_color)
-  if (background_color) then
-    vim.o.background = 'light'
-  else
-    vim.o.background = 'dark'
-  end
-end
-
-local function hide_status_line(value)
-  if (value) then
-    vim.cmd('set laststatus=0')
-  else
-    vim.cmd('set laststatus=2')
-  end
-end
-
--- Variables para manejar estado
-local color = false
-local hide_status = true
-
--- Ocultar la barra de estado
-vim.keymap.set('n', '<leader>hs', function()
-  hide_status_line(hide_status)
-  hide_status = not hide_status
-end)
-
--- Cambiar el color del tema
-vim.keymap.set('n', '<leader>t', function()
-  color = not color
-  change_background(color)
-end, { desc = 'Change background color theme' })
-
--- Cambiar el fondo al cargar neovim
-change_background(color)
 
 -- Desactivar el espacio en normal y visual
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -119,6 +166,29 @@ require('lazy').setup({
   -- Plugins de git
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+
+  -- Github Copilot
+  {
+    'github/copilot.vim',
+    config = function()
+      -- Permite usar Tab para los snippets y copilot
+      vim.g.copilot_assume_mapped = true
+      local enabled = true
+
+      -- Atajo para activar o desactivar Github Copilot
+      vim.keymap.set('n', '<leader>tg', function()
+        if enabled then
+          vim.cmd('Copilot disable')
+          print('Copilot disabled')
+          enabled = false
+        else
+          vim.cmd('Copilot enable')
+          print('Copilot enabled')
+          enabled = true
+        end
+      end, { desc = '[T]oggle [G]ithub Copilot' })
+    end
+  },
 
   -- Detectar tabstop y shiftwidth automáticamente
   'tpope/vim-sleuth',
@@ -177,8 +247,34 @@ require('lazy').setup({
       require('nvim-tree').setup()
       vim.keymap.set('n', '<leader>e', function()
         vim.cmd('NvimTreeToggle')
-      end)
+      end, { desc = 'Open File [E]xplorer' })
     end
+  },
+
+  {
+    -- Barra con los buffers
+    'akinsho/bufferline.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('bufferline').setup()
+
+      -- Atajos para navegar
+      vim.keymap.set('n', '<M-j>', function()
+        vim.cmd('BufferLineCyclePrev')
+      end, { desc = 'Move to previous buffer' })
+      vim.keymap.set('n', '<M-k>', function()
+        vim.cmd('BufferLineCycleNext')
+      end, { desc = 'Move to next buffer' })
+      vim.keymap.set('n', '<M-J>', function()
+        vim.cmd('BufferLineMovePrev')
+      end, { desc = 'Move to previous buffer' })
+      vim.keymap.set('n', '<M-K>', function()
+        vim.cmd('BufferLineMoveNext')
+      end, { desc = 'Move to next buffer' })
+      vim.keymap.set('n', '<leader>cb', function()
+        vim.cmd('bdelete')
+      end, { desc = 'Close [C]urrent [B]uffer ' })
+    end,
   },
 
   {
@@ -192,15 +288,6 @@ require('lazy').setup({
         section_separators = '',
         disabled_filetypes = { 'NvimTree' },
       },
-    },
-  },
-
-  {
-    -- Mostrar las líneas de indentación
-    'lukas-reineke/indent-blankline.nvim',
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
     },
   },
 
@@ -220,6 +307,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'p00f/nvim-ts-rainbow'
     },
     opts = {}
   },
@@ -246,7 +334,15 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files, { desc = 'Search files in git repository' })
+vim.keymap.set('n', '<C-p>', function()
+  local is_git = os.execute('git') == 0
+  if is_git then
+    require('telescope.builtin').git_files()
+  else
+    require('telescope.builtin').find_files()
+  end
+end, { desc = 'File picker, only git files if in a git repo' })
+
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -259,6 +355,7 @@ require('nvim-treesitter.configs').setup {
   auto_install = false,
 
   highlight = { enable = true },
+  rainbow = { enable = true },
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
     enable = true,
@@ -314,6 +411,16 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+-- Activar y desactivar el resaltado de sintaxis
+vim.keymap.set('n', '<leader>th', function()
+  vim.cmd('TSBufToggle highlight')
+end, { desc = '[T]oggle treesitter [H]ighlight' })
+
+-- Activar y desactivar ts-rainbow
+vim.keymap.set('n', '<leader>tr', function()
+  vim.cmd('TSBufToggle rainbow')
+end, { desc = '[T]oggle treesitter [R]ainbow' })
+
 -- Atajos de teclados de diagnóstico
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
@@ -351,10 +458,13 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  -- Crear un comando para formatear el archivo con LSP
+  -- Crear un comando y atajo para formatear el archivo con LSP
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+  nmap('<leader>f', function()
+    vim.cmd('Format')
+  end, '[F]ormat file')
 end
 
 -- Activar los LSP de estos lenguajes
@@ -405,11 +515,21 @@ local luasnip = require 'luasnip'
 
 luasnip.config.setup {}
 
+-- Agregar paréntesis al autocompletar funciones o similares
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 cmp.setup {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
   },
   mapping = cmp.mapping.preset.insert {
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -420,18 +540,14 @@ cmp.setup {
       select = true,
     },
         ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
+      if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
         fallback()
       end
     end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
