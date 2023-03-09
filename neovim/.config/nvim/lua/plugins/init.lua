@@ -8,13 +8,13 @@ return {
   {
     -- Plugin para comentar
     'numToStr/Comment.nvim',
-    event = 'VeryLazy',
+    keys = { 'gc', 'gb', { 'gc', mode = 'v' }, { 'gb', mode = 'v' } },
     config = true
   },
   {
     -- Plugin para modificar los delimitadores
     'kylechui/nvim-surround',
-    event = 'VeryLazy',
+    keys = { 'cs', 'ds', 'ys' },
     config = true
   }
 }
