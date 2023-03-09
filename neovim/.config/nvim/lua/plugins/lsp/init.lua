@@ -7,24 +7,7 @@ return {
     'folke/neodev.nvim',
   },
   config = function()
-    local servers = {
-      jsonls = {
-        init_options = {
-          provideFormatter = false,
-        },
-      },
-      clangd = {},
-      gopls = {},
-      pyright = {},
-      rust_analyzer = {},
-      tsserver = {},
-      lua_ls = {
-        Lua = {
-          workspace = { checkThirdParty = false },
-          telemetry = { enable = false },
-        },
-      },
-    }
+    local servers = require('plugins.lsp.config').servers
 
     require('neodev').setup()
 
@@ -44,6 +27,7 @@ return {
         require('lspconfig')[server_name].setup({
           capabilities = capabilities,
           settings = servers[server_name],
+          on_attach = require('plugins.lsp.config').on_attach,
           init_options = servers[server_name].init_options,
         })
       end
