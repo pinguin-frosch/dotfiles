@@ -34,6 +34,9 @@ vim.o.tabstop = 4
 -- Configurar el tamaño de espacios
 vim.o.shiftwidth = 4
 
+-- Usar espacios en vez de tabs
+vim.o.expandtab = true
+
 -- Activar el mouse
 vim.o.mouse = 'a'
 
