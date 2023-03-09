@@ -18,7 +18,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Cargar plugins y cambiar el tema de lazy
 require('lazy').setup('plugins', {
-    install = {
-        colorscheme = { 'onedark' }
-    }
+  install = {
+    colorscheme = { 'onedark' }
+  },
+  change_detection = {
+    notify = false
+  }
 })

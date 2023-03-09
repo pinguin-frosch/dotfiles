@@ -16,5 +16,8 @@ return {
     'kylechui/nvim-surround',
     keys = { 'cs', 'ds', 'ys' },
     config = true
-  }
+  },
+
+  -- Detectar indentación
+  'tpope/vim-sleuth'
 }
