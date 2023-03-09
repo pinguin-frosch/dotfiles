@@ -167,6 +167,63 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
+  -- Detectar tabstop y shiftwidth automáticamente
+  'tpope/vim-sleuth',
+
+  -- Muestra autocompletado para atajos pendientes
+  'folke/which-key.nvim',
+
+  -- Plugin para comentar
+  'numToStr/Comment.nvim',
+
+  -- Plugin para modificar los delimitadores
+  'kylechui/nvim-surround',
+
+  -- Autocerrar pares
+  'windwp/nvim-autopairs',
+
+  -- Tema inspirado por Atom
+  {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+  },
+
+  -- Plugin para buscar archivos, entre otras cosas
+  {
+    'nvim-telescope/telescope.nvim',
+    version = '*',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+
+  -- Destacar, editar y navigar el código
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = { 'p00f/nvim-ts-rainbow' },
+  },
+
+  {
+    -- Autocompletado
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip'
+    },
+  },
+
+  -- Plugins de LSP
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'folke/neodev.nvim',
+    },
+  },
+
   -- Github Copilot
   {
     'github/copilot.vim',
@@ -190,32 +247,8 @@ require('lazy').setup({
     end
   },
 
-  -- Detectar tabstop y shiftwidth automáticamente
-  'tpope/vim-sleuth',
-
+  -- Añade los símbolos para indicar los cambios en git
   {
-    -- Plugins de LSP
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Instalar LSPs en stdpath automáticamente
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Configuración adicional de lua, mejora neovim
-      'folke/neodev.nvim',
-    },
-  },
-
-  {
-    -- Autocompletado
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  },
-
-  -- Muestra autocompletado para atajos pendientes
-  { 'folke/which-key.nvim',          opts = {} },
-  {
-    -- Añade los símbolos para indicar los cambios en git
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -226,15 +259,6 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
-  },
-
-  {
-    -- Tema inspirado por Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
   },
 
   {
@@ -277,40 +301,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    -- Activar lualine como línea de estado
-    'nvim-lualine/lualine.nvim',
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-        disabled_filetypes = { 'NvimTree' },
-      },
-    },
-  },
-
-  -- Plugin para comentar según tipo de archivo
-  { 'numToStr/Comment.nvim',         opts = {} },
-
-  -- Plugin para modificar los delimitadores
-  { 'kylechui/nvim-surround',        opts = {} },
-
-  -- Autocerrar pares
-  { 'windwp/nvim-autopairs',         opts = {} },
-
-  -- Plugin para buscar archivos, entre otras cosas
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
-  {
-    -- Destacar, editar y navigar el código
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'p00f/nvim-ts-rainbow'
-    },
-    opts = {}
-  },
 }, {})
 
 -- [[ Configurar Telescope ]]
@@ -334,15 +324,6 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<C-p>', function()
-  local is_git = os.execute('git') == 0
-  if is_git then
-    require('telescope.builtin').git_files()
-  else
-    require('telescope.builtin').find_files()
-  end
-end, { desc = 'File picker, only git files if in a git repo' })
-
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -357,58 +338,6 @@ require('nvim-treesitter.configs').setup {
   highlight = { enable = true },
   rainbow = { enable = true },
   indent = { enable = true, disable = { 'python' } },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-            ['aa'] = '@parameter.outer',
-            ['ia'] = '@parameter.inner',
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
-            ['ac'] = '@class.outer',
-            ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-            ['>f'] = '@function.outer',
-            ['>c'] = '@class.outer',
-      },
-      goto_next_end = {
-            ['>F'] = '@function.outer',
-            ['>C'] = '@class.outer',
-      },
-      goto_previous_start = {
-            ['<f'] = '@function.outer',
-            ['<c'] = '@class.outer',
-      },
-      goto_previous_end = {
-            ['<F'] = '@function.outer',
-            ['<C'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-            ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-            ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
 }
 
 -- Activar y desactivar el resaltado de sintaxis
@@ -428,7 +357,7 @@ vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- Configuraciones de LSP
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -458,17 +387,28 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  -- Crear un comando y atajo para formatear el archivo con LSP
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-  nmap('<leader>f', function()
-    vim.cmd('Format')
-  end, '[F]ormat file')
+  -- Formateo para json
+  if client.name == 'jsonls' then
+    nmap('<leader>f', function()
+      vim.cmd('%!jq .')
+    end, '[F]ormat file')
+  end
+
+  -- Activar el formateo de LSP
+  if client.server_capabilities.documentFormattingProvider then
+    nmap('<leader>f', function()
+      vim.lsp.buf.format()
+    end, '[F]ormat file')
+  end
 end
 
 -- Activar los LSP de estos lenguajes
 local servers = {
+  jsonls = {
+    init_options = {
+      provideFormatter = false,
+    },
+  },
   clangd = {},
   gopls = {},
   pyright = {},
@@ -505,6 +445,7 @@ mason_lspconfig.setup_handlers {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
+      init_options = servers[server_name].init_options,
     }
   end,
 }
