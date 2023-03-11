@@ -41,28 +41,14 @@ return {
           { name = 'path' },
         },
         mapping = cmp.mapping.preset.insert({
-              ['<C-e>'] = cmp.mapping.close(),
-              ['<C-f>'] = cmp.mapping.scroll_docs(4),
-              ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-              ['<C-Space>'] = cmp.mapping.complete(),
-              ['<CR>'] = cmp.mapping.confirm({
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
           }),
-              ['<Tab>'] = cmp.mapping(function(fallback)
-            if require('luasnip').expand_or_jumpable() then
-              require('luasnip').expand_or_jump()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-              ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if require('luasnip').jumpable(-1) then
-              require('luasnip').jump(-1)
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
         })
       }
     end,
