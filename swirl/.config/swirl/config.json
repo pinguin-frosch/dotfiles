@@ -1,0 +1,46 @@
+{
+  "theme": "catppuccin",
+  "background": "light",
+  "applications": [
+    {
+      "name": "kde",
+      "variables": {},
+      "background_commands": {
+        "dark": [
+          "lookandfeeltool -a org.kde.breezedark.desktop >/dev/null 2>&1"
+        ],
+        "light": [
+          "lookandfeeltool -a org.kde.breeze.desktop >/dev/null 2>&1"
+        ]
+      }
+    },
+    {
+      "name": "neovim",
+      "variables": {
+        "ruta": "~/.config/nvim/lua/config/options.lua"
+      },
+      "background_commands": {
+        "dark": [
+          "sed -i \"6s|background = .*|background = 'dark'|\" %ruta%"
+        ],
+        "light": [
+          "sed -i \"6s|background = .*|background = 'light'|\" %ruta%"
+        ]
+      }
+    },
+    {
+      "name": "alacritty",
+      "variables": {
+        "ruta": "~/.config/alacritty/alacritty.yml"
+      },
+      "background_commands": {
+        "dark": [
+          "sed -i \"17s|light|dark|\" %ruta%"
+        ],
+        "light": [
+          "sed -i \"17s|dark|light|\" %ruta%"
+        ]
+      }
+    }
+  ]
+}
