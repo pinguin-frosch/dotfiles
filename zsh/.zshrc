@@ -10,6 +10,9 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=
 autoload -Uz compinit
 compinit
 
+# Configurar zoxide
+eval "$(zoxide init zsh)"
+
 # Prompt de la terminal
 autoload -U colors && colors
 PROMPT=" %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}\$vcs_info_msg_0_ "
@@ -49,6 +52,7 @@ export PATH=$PATH:$HOME/.local/bin:$GOPATH/bin:$HOME/Programación/scripts
 export EDITOR=nvim
 
 # Aliases
+alias nvim="nvim --listen /tmp/nvim.socket"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias g="git status"
