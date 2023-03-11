@@ -1,4 +1,4 @@
-require('config.options')
+local theme = require('config.options')
 require('config.keymaps')
 require('config.autocommands')
 
@@ -19,9 +19,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Cargar plugins y cambiar el tema de lazy
 require('lazy').setup('plugins', {
   install = {
-    colorscheme = { 'onedark' }
+    colorscheme = { theme }
   },
   change_detection = {
     notify = false
   }
 })
+
+-- Cambiar el tema, tiene que ser después de cargar los plugins
+vim.cmd('colorscheme ' .. theme)

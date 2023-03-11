@@ -3,7 +3,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Color del fondo del tema
-vim.o.background = 'dark'
+vim.o.background = 'light'
+
+-- Tema del editor
+local theme = 'catppuccin'
 
 -- Ocultar barra de comandos
 vim.o.cmdheight = 1
@@ -64,3 +67,4 @@ vim.o.termguicolors = true
 -- Mantener un borde al bajar o subir
 vim.o.scrolloff = 5
 
+return theme

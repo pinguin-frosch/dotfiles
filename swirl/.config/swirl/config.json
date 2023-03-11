@@ -3,6 +3,80 @@
   "background": "light",
   "applications": [
     {
+      "name": "neovim",
+      "variables": {
+        "path": "~/.config/nvim/lua/config/options.lua"
+      },
+      "background_commands": {
+        "dark": [
+          "sed -i \"6s|background = 'light'|background = 'dark'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":set background=dark<CR>\""
+        ],
+        "light": [
+          "sed -i \"6s|background = 'dark'|background = 'light'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":set background=light<CR>\""
+        ]
+      },
+      "theme_commands": {
+        "catppuccin": [
+          "sed -i \"9s|'.*'|'catppuccin'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme catppuccin<CR>\""
+        ],
+        "onedark": [
+          "sed -i \"9s|'.*'|'onedark'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme onedark<CR>\""
+        ]
+      }
+    },
+    {
+      "name": "alacritty",
+      "variables": {
+        "path": "~/.config/alacritty/alacritty.yml"
+      },
+      "background_commands": {
+        "dark": [
+          "sed -i \"17s|-light\\.|-dark.|\" %path%"
+        ],
+        "light": [
+          "sed -i \"17s|-dark\\.|-light.|\" %path%"
+        ]
+      },
+      "theme_commands": {
+        "catppuccin": [
+          "sed -i 17s|s/.*-|s/catppuccin-| %path%"
+        ],
+        "onedark": [
+          "sed -i 17s|s/.*-|s/onedark-| %path%"
+        ]
+      }
+    },
+    {
+      "name": "tmux",
+      "variables": {
+        "path": "~/.config/tmux/tmux.conf"
+      },
+      "background_commands": {
+        "dark": [
+          "sed -i \"2s|-light\\.|-dark.|\" %path%",
+          "tmux source-file %path%"
+        ],
+        "light": [
+          "sed -i \"2s|-dark\\.|-light.|\" %path%",
+          "tmux source-file %path%"
+        ]
+      },
+      "theme_commands": {
+        "catppuccin": [
+          "sed -i 2s|s/.*-|s/catppuccin-| %path%",
+          "tmux source-file %path%"
+        ],
+        "onedark": [
+          "sed -i 2s|s/.*-|s/onedark-| %path%",
+          "tmux source-file %path%"
+        ]
+      }
+    },
+    {
       "name": "kde",
       "variables": {},
       "background_commands": {
@@ -27,50 +101,6 @@
         "light": [
           "sed -i \"s|--enable-features=WebUIDarkMode|--|\" %path%",
           "sed -i \"s|--force-dark-mode|##|\" %path%"
-        ]
-      }
-    },
-    {
-      "name": "neovim",
-      "variables": {
-        "path": "~/.config/nvim/lua/config/options.lua"
-      },
-      "background_commands": {
-        "dark": [
-          "sed -i \"6s|background = .*|background = 'dark'|\" %path%"
-        ],
-        "light": [
-          "sed -i \"6s|background = .*|background = 'light'|\" %path%"
-        ]
-      }
-    },
-    {
-      "name": "alacritty",
-      "variables": {
-        "path": "~/.config/alacritty/alacritty.yml"
-      },
-      "background_commands": {
-        "dark": [
-          "sed -i \"17s|light|dark|\" %path%"
-        ],
-        "light": [
-          "sed -i \"17s|dark|light|\" %path%"
-        ]
-      }
-    },
-    {
-      "name": "tmux",
-      "variables": {
-        "path": "~/.config/tmux/tmux.conf"
-      },
-      "background_commands": {
-        "dark": [
-          "sed -i \"2s|light|dark|\" %path%",
-          "tmux source-file %path%"
-        ],
-        "light": [
-          "sed -i \"2s|dark|light|\" %path%",
-          "tmux source-file %path%"
         ]
       }
     },
