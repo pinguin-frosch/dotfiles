@@ -48,7 +48,7 @@ echo -ne '\e[5 q'
 preexec() { echo -ne '\e[5 q' ;}
 
 # Exports
-export PATH=$PATH:$HOME/.local/bin:$GOPATH/bin:$HOME/Programación/scripts
+export PATH=$PATH:$HOME/.local/bin:$GOPATH/bin
 export EDITOR=nvim
 
 # Aliases
