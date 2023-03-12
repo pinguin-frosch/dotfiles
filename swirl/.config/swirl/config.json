@@ -77,6 +77,34 @@
       }
     },
     {
+      "name": "vscode",
+      "variables": {
+        "path": "~/.config/Code/User/settings.json",
+        "parse_theme": "%%theme%_%background%%",
+        "catppuccin_dark": "Catppuccin Mocha",
+        "catppuccin_light": "Catppuccin Latte",
+        "onedark_dark": "Atom One Dark",
+        "onedark_light": "Atom One Light",
+        "command": "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%"
+      },
+      "background_commands": {
+        "dark": [
+          "%command%"
+        ],
+        "light": [
+          "%command%"
+        ]
+      },
+      "theme_commands": {
+        "catppuccin": [
+          "%command%"
+        ],
+        "onedark": [
+          "%command%"
+        ]
+      }
+    },
+    {
       "name": "kde",
       "variables": {},
       "background_commands": {
