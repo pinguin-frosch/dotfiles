@@ -20,6 +20,10 @@
         ]
       },
       "theme_commands": {
+        "ayu": [
+          "sed -i \"9s|'.*'|'ayu'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme ayu\u003cCR\u003e\""
+        ],
         "catppuccin": [
           "sed -i \"9s|'.*'|'catppuccin'|\" %path%",
           "nvim --server /tmp/nvim.socket --remote-send \":colorscheme catppuccin\u003cCR\u003e\""
@@ -27,6 +31,10 @@
         "onedark": [
           "sed -i \"9s|'.*'|'onedark'|\" %path%",
           "nvim --server /tmp/nvim.socket --remote-send \":colorscheme onedark\u003cCR\u003e\""
+        ],
+        "tokyonight": [
+          "sed -i \"9s|'.*'|'tokyonight'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme tokyonight\u003cCR\u003e\""
         ]
       }
     },
@@ -44,11 +52,17 @@
         ]
       },
       "theme_commands": {
+        "ayu": [
+          "sed -i 17s|s/.*-|s/ayu-| %path%"
+        ],
         "catppuccin": [
           "sed -i 17s|s/.*-|s/catppuccin-| %path%"
         ],
         "onedark": [
           "sed -i 17s|s/.*-|s/onedark-| %path%"
+        ],
+        "tokyonight": [
+          "sed -i 17s|s/.*-|s/tokyonight-| %path%"
         ]
       }
     },
@@ -68,6 +82,10 @@
         ]
       },
       "theme_commands": {
+        "ayu": [
+          "sed -i 2s|s/.*-|s/ayu-| %path%",
+          "tmux source-file %path%"
+        ],
         "catppuccin": [
           "sed -i 2s|s/.*-|s/catppuccin-| %path%",
           "tmux source-file %path%"
@@ -75,19 +93,27 @@
         "onedark": [
           "sed -i 2s|s/.*-|s/onedark-| %path%",
           "tmux source-file %path%"
+        ],
+        "tokyonight": [
+          "sed -i 2s|s/.*-|s/tokyonight-| %path%",
+          "tmux source-file %path%"
         ]
       }
     },
     {
       "name": "vscode",
       "variables": {
+        "ayu_dark": "Ayu Dark",
+        "ayu_light": "Ayu Light",
         "catppuccin_dark": "Catppuccin Mocha",
         "catppuccin_light": "Catppuccin Latte",
         "command": "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%",
         "onedark_dark": "Atom One Dark",
         "onedark_light": "Atom One Light",
         "parse_theme": "%%theme%_%background%%",
-        "path": "~/.config/Code/User/settings.json"
+        "path": "~/.config/Code/User/settings.json",
+        "tokyonight_dark": "Tokyo Night",
+        "tokyonight_light": "Tokyo Night Light"
       },
       "background_commands": {
         "dark": [
@@ -98,10 +124,16 @@
         ]
       },
       "theme_commands": {
+        "ayu": [
+          "%command%"
+        ],
         "catppuccin": [
           "%command%"
         ],
         "onedark": [
+          "%command%"
+        ],
+        "tokyonight": [
           "%command%"
         ]
       }

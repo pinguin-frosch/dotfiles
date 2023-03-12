@@ -4,8 +4,14 @@ return {
   },
   {
     'catppuccin/nvim',
-    config = function()
-      vim.cmd('colorscheme catppuccin')
-    end,
+  },
+  {
+    'Shatur/neovim-ayu'
+  },
+  {
+    'folke/tokyonight.nvim',
+    opts = {
+      style = 'night'
+    }
   }
 }
