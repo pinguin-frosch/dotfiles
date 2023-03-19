@@ -4,42 +4,25 @@ return {
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },
-  config = true,
-  keys = {
-    {
-      '<M-j>',
-      function()
-        vim.cmd('BufferLineCyclePrev')
-      end,
-      desc = 'Move to previous buffer'
-    },
-    {
-      '<M-k>',
-      function()
-        vim.cmd('BufferLineCycleNext')
-      end,
-      desc = 'Move to next buffer'
-    },
-    {
-      '<M-J>',
-      function()
-        vim.cmd('BufferLineMovePrev')
-      end,
-      desc = 'Swap with previous buffer'
-    },
-    {
-      '<M-K>',
-      function()
-        vim.cmd('BufferLineMoveNext')
-      end,
-      desc = 'Swap with next buffer'
-    },
-    {
-      '<leader>bc',
-      function()
-        vim.cmd('bdelete')
-      end,
-      desc = 'Close current buffer'
-    },
-  },
+  config = function()
+    require('bufferline').setup()
+    vim.keymap.set('n', '<M-j>', function()
+      vim.cmd('BufferLineCyclePrev')
+    end, { silent = true })
+    vim.keymap.set('n', '<M-k>', function()
+      vim.cmd('BufferLineCycleNext')
+    end, { silent = true })
+    vim.keymap.set('n', '<M-J>', function()
+      vim.cmd('BufferLineMovePrev')
+    end, { silent = true })
+    vim.keymap.set('n', '<M-K>', function()
+      vim.cmd('BufferLineMoveNext')
+    end, { silent = true })
+    vim.keymap.set('n', '<leader>bc', function()
+      vim.cmd('bdelete')
+    end, { silent = true })
+    vim.keymap.set('n', '<leader>bC', function()
+      vim.cmd('bdelete!')
+    end, { silent = true })
+  end,
 }

@@ -10,9 +10,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=
 autoload -Uz compinit
 compinit
 
-# Configurar zoxide
-eval "$(zoxide init zsh)"
-
 # Prompt de la terminal
 autoload -U colors && colors
 PROMPT=" %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}\$vcs_info_msg_0_ "
@@ -47,10 +44,6 @@ zle -N zle-line-init
 echo -ne '\e[5 q'
 preexec() { echo -ne '\e[5 q' ;}
 
-# Exports
-export PATH=$PATH:$HOME/.local/bin:$GOPATH/bin
-export EDITOR=nvim
-
 # Aliases
 alias nvim="nvim --listen /tmp/nvim.socket"
 alias ls="ls --color=auto"
@@ -82,6 +75,7 @@ github_plugins=(
   zsh-users/zsh-syntax-highlighting
   hlissner/zsh-autopair
 )
+
 for plugin in $github_plugins; do
   if [[ ! -d ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin ]]; then
     mkdir -p ${ZDOTDIR:-$HOME}/.zsh_plugins/${plugin%/*}
@@ -94,6 +88,7 @@ for plugin in $github_plugins; do
     fi
   done
 done
+
 unset github_plugins
 unset plugin
 unset initscript

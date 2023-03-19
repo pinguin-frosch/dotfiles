@@ -37,6 +37,12 @@ vim.o.tabstop = 4
 -- Configurar el tamaño de espacios
 vim.o.shiftwidth = 4
 
+-- Configurar el tamaño de cada <Tab>
+vim.o.softtabstop = 4
+
+-- Auto indent
+vim.o.autoindent = true
+
 -- Usar espacios en vez de tabs
 vim.o.expandtab = true
 
