@@ -67,6 +67,40 @@
       }
     },
     {
+      "name": "kitty",
+      "variables": {
+        "path": "~/.config/kitty/kitty.conf"
+      },
+      "background_commands": {
+        "dark": [
+          "sed -i \"6s|-light\\.|-dark.|\" %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ],
+        "light": [
+          "sed -i \"6s|-dark\\.|-light.|\" %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ]
+      },
+      "theme_commands": {
+        "ayu": [
+          "sed -i 6s|s/.*-|s/ayu-| %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ],
+        "catppuccin": [
+          "sed -i 6s|s/.*-|s/catppuccin-| %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ],
+        "onedark": [
+          "sed -i 6s|s/.*-|s/onedark-| %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ],
+        "tokyonight": [
+          "sed -i 6s|s/.*-|s/tokyonight-| %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ]
+      }
+    },
+    {
       "name": "tmux",
       "variables": {
         "path": "~/.config/tmux/tmux.conf"
