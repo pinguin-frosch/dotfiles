@@ -12,6 +12,17 @@
         "parse_background": "%g_%background%%",
         "path": "~/.config/chrome-flags.conf"
       },
+      "insomnia": {
+        "ayu_dark": "ayu-dark",
+        "ayu_light": "ayu-light",
+        "catppuccin_dark": "catppuccin-mocha",
+        "catppuccin_light": "catppuccin-latte",
+        "onedark_dark": "one-dark",
+        "onedark_light": "one-light",
+        "path": "~/.config/Insomnia/insomnia.Settings.db",
+        "tokyonight_dark": "tokyo-night",
+        "tokyonight_light": "tokyo-night-light"
+      },
       "kde": {
         "k_dark": "org.kde.breezedark.desktop",
         "k_light": "org.kde.breeze.desktop",
@@ -140,6 +151,13 @@
       "name": "vscode",
       "commands": [
         "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%"
+      ]
+    },
+    {
+      "name": "insomnia",
+      "commands": [
+        "sed -i 's|\"lightTheme\":\"[^\"]*\"|\"lightTheme\":\"%%theme%_light%\"|' %path%",
+        "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%%theme%_dark%\"|' %path%"
       ]
     }
   ]
