@@ -11,6 +11,13 @@ M.servers = {
     pyright = {},
     rust_analyzer = {},
     tsserver = {},
+    r_language_server = {},
+    dockerls = {},
+    docker_compose_language_service = {},
+    bashls = {},
+    cssls = {},
+    html = {},
+    emmet_ls = {},
     lua_ls = {
         Lua = {
             workspace = { checkThirdParty = false },
