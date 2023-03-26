@@ -3,136 +3,45 @@
     "theme": "catppuccin",
     "background": "light"
   },
-  "applications": [
+  "background": [
     {
       "name": "neovim",
       "variables": {
         "path": "~/.config/nvim/lua/config/options.lua"
       },
-      "background_commands": {
-        "dark": [
-          "sed -i \"6s|background = 'light'|background = 'dark'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":set background=dark\u003cCR\u003e\""
-        ],
-        "light": [
-          "sed -i \"6s|background = 'dark'|background = 'light'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":set background=light\u003cCR\u003e\""
-        ]
-      },
-      "theme_commands": {
-        "ayu": [
-          "sed -i \"9s|'.*'|'ayu'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme ayu\u003cCR\u003e\""
-        ],
-        "catppuccin": [
-          "sed -i \"9s|'.*'|'catppuccin'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme catppuccin\u003cCR\u003e\""
-        ],
-        "onedark": [
-          "sed -i \"9s|'.*'|'onedark'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme onedark\u003cCR\u003e\""
-        ],
-        "tokyonight": [
-          "sed -i \"9s|'.*'|'tokyonight'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme tokyonight\u003cCR\u003e\""
-        ]
-      }
-    },
-    {
-      "name": "alacritty",
-      "variables": {
-        "path": "~/.config/alacritty/alacritty.yml"
-      },
-      "background_commands": {
-        "dark": [
-          "sed -i \"17s|-light\\.|-dark.|\" %path%"
-        ],
-        "light": [
-          "sed -i \"17s|-dark\\.|-light.|\" %path%"
-        ]
-      },
-      "theme_commands": {
-        "ayu": [
-          "sed -i 17s|s/.*-|s/ayu-| %path%"
-        ],
-        "catppuccin": [
-          "sed -i 17s|s/.*-|s/catppuccin-| %path%"
-        ],
-        "onedark": [
-          "sed -i 17s|s/.*-|s/onedark-| %path%"
-        ],
-        "tokyonight": [
-          "sed -i 17s|s/.*-|s/tokyonight-| %path%"
-        ]
-      }
+      "commands": [
+        "sed -i \"6s|background = '.*'|background = '%background%'|\" %path%",
+        "nvim --server /tmp/nvim.socket --remote-send \":set background=%background%\u003cCR\u003e\""
+      ]
     },
     {
       "name": "kitty",
       "variables": {
         "path": "~/.config/kitty/kitty.conf"
       },
-      "background_commands": {
-        "dark": [
-          "sed -i \"6s|-light\\.|-dark.|\" %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ],
-        "light": [
-          "sed -i \"6s|-dark\\.|-light.|\" %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ]
+      "commands": [
+        "sed -i \"6s|-.*\\.|-%background%.|\" %path%",
+        "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+      ]
+    },
+    {
+      "name": "alacritty",
+      "variables": {
+        "path": "~/.config/alacritty/alacritty.yml"
       },
-      "theme_commands": {
-        "ayu": [
-          "sed -i 6s|s/.*-|s/ayu-| %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ],
-        "catppuccin": [
-          "sed -i 6s|s/.*-|s/catppuccin-| %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ],
-        "onedark": [
-          "sed -i 6s|s/.*-|s/onedark-| %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ],
-        "tokyonight": [
-          "sed -i 6s|s/.*-|s/tokyonight-| %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ]
-      }
+      "commands": [
+        "sed -i '17s|\\(s/.*-\\).*|\\1%background%.yml|' %path%"
+      ]
     },
     {
       "name": "tmux",
       "variables": {
         "path": "~/.config/tmux/tmux.conf"
       },
-      "background_commands": {
-        "dark": [
-          "sed -i \"2s|-light\\.|-dark.|\" %path%",
-          "tmux source-file %path%"
-        ],
-        "light": [
-          "sed -i \"2s|-dark\\.|-light.|\" %path%",
-          "tmux source-file %path%"
-        ]
-      },
-      "theme_commands": {
-        "ayu": [
-          "sed -i 2s|s/.*-|s/ayu-| %path%",
-          "tmux source-file %path%"
-        ],
-        "catppuccin": [
-          "sed -i 2s|s/.*-|s/catppuccin-| %path%",
-          "tmux source-file %path%"
-        ],
-        "onedark": [
-          "sed -i 2s|s/.*-|s/onedark-| %path%",
-          "tmux source-file %path%"
-        ],
-        "tokyonight": [
-          "sed -i 2s|s/.*-|s/tokyonight-| %path%",
-          "tmux source-file %path%"
-        ]
-      }
+      "commands": [
+        "sed -i '2s|\\(s/.*-\\).*|\\1%background%.conf|' %path%",
+        "tmux source-file %path%"
+      ]
     },
     {
       "name": "vscode",
@@ -141,7 +50,6 @@
         "ayu_light": "Ayu Light",
         "catppuccin_dark": "Catppuccin Mocha",
         "catppuccin_light": "Catppuccin Latte",
-        "command": "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%",
         "onedark_dark": "Atom One Dark",
         "onedark_light": "Atom One Light",
         "parse_theme": "%%theme%_%background%%",
@@ -149,88 +57,112 @@
         "tokyonight_dark": "Tokyo Night",
         "tokyonight_light": "Tokyo Night Light"
       },
-      "background_commands": {
-        "dark": [
-          "%command%"
-        ],
-        "light": [
-          "%command%"
-        ]
-      },
-      "theme_commands": {
-        "ayu": [
-          "%command%"
-        ],
-        "catppuccin": [
-          "%command%"
-        ],
-        "onedark": [
-          "%command%"
-        ],
-        "tokyonight": [
-          "%command%"
-        ]
-      }
+      "commands": [
+        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%"
+      ]
     },
     {
       "name": "kde",
-      "variables": {},
-      "background_commands": {
-        "dark": [
-          "lookandfeeltool -a org.kde.breezedark.desktop \u003e/dev/null 2\u003e\u00261"
-        ],
-        "light": [
-          "lookandfeeltool -a org.kde.breeze.desktop \u003e/dev/null 2\u003e\u00261"
-        ]
+      "variables": {
+        "k_dark": "org.kde.breezedark.desktop",
+        "k_light": "org.kde.breeze.desktop",
+        "parse_background": "%k_%background%%"
       },
-      "theme_commands": {}
+      "commands": [
+        "lookandfeeltool -a %parse_background% \u003e/dev/null 2\u003e\u00261"
+      ]
     },
     {
       "name": "google chrome",
       "variables": {
+        "g_dark": "1s|#|--|g",
+        "g_light": "1s|--|#|g",
+        "parse_background": "%g_%background%%",
         "path": "~/.config/chrome-flags.conf"
       },
-      "background_commands": {
-        "dark": [
-          "sed -i \"s|^--$|--enable-features=WebUIDarkMode|\" %path%",
-          "sed -i \"s|^##$|--force-dark-mode|\" %path%"
-        ],
-        "light": [
-          "sed -i \"s|--enable-features=WebUIDarkMode|--|\" %path%",
-          "sed -i \"s|--force-dark-mode|##|\" %path%"
-        ]
-      },
-      "theme_commands": {}
+      "commands": [
+        "sed -i '%parse_background%' %path%"
+      ]
     },
     {
       "name": "obs",
       "variables": {
+        "o_dark": "Yami",
+        "o_light": "Light",
+        "parse_background": "%o_%background%%",
         "path": "~/.config/obs-studio/global.ini"
       },
-      "background_commands": {
-        "dark": [
-          "sed -i s|CurrentTheme3=.*|CurrentTheme3=Yami| %path%"
-        ],
-        "light": [
-          "sed -i s|CurrentTheme3=.*|CurrentTheme3=Light| %path%"
-        ]
-      },
-      "theme_commands": {}
+      "commands": [
+        "sed -i s|CurrentTheme3=.*|CurrentTheme3=%parse_background%| %path%"
+      ]
     },
     {
       "name": "onlyoffice",
       "variables": {
         "path": "~/.config/onlyoffice/DesktopEditors.conf"
       },
-      "background_commands": {
-        "dark": [
-          "sed -i s|UITheme2=.*|UITheme2=theme-dark| %path%"
-        ],
-        "light": [
-          "sed -i s|UITheme2=.*|UITheme2=theme-light| %path%"
-        ]
+      "commands": [
+        "sed -i s|UITheme2=.*|UITheme2=theme-%background%| %path%"
+      ]
+    }
+  ],
+  "theme": [
+    {
+      "name": "neovim",
+      "variables": {
+        "path": "~/.config/nvim/lua/config/options.lua"
       },
-      "theme_commands": {}
+      "commands": [
+        "sed -i \"9s|'.*'|'%theme%'|\" %path%",
+        "nvim --server /tmp/nvim.socket --remote-send \":colorscheme %theme%\u003cCR\u003e\""
+      ]
+    },
+    {
+      "name": "kitty",
+      "variables": {
+        "path": "~/.config/kitty/kitty.conf"
+      },
+      "commands": [
+        "sed -i 6s|s/.*-|s/%theme%-| %path%",
+        "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+      ]
+    },
+    {
+      "name": "alacritty",
+      "variables": {
+        "path": "~/.config/alacritty/alacritty.yml"
+      },
+      "commands": [
+        "sed -i 17s|s/.*-|s/%theme%-| %path%"
+      ]
+    },
+    {
+      "name": "tmux",
+      "variables": {
+        "path": "~/.config/tmux/tmux.conf"
+      },
+      "commands": [
+        "sed -i 2s|s/.*-|s/%theme%-| %path%",
+        "tmux source-file %path%"
+      ]
+    },
+    {
+      "name": "vscode",
+      "variables": {
+        "ayu_dark": "Ayu Dark",
+        "ayu_light": "Ayu Light",
+        "catppuccin_dark": "Catppuccin Mocha",
+        "catppuccin_light": "Catppuccin Latte",
+        "onedark_dark": "Atom One Dark",
+        "onedark_light": "Atom One Light",
+        "parse_theme": "%%theme%_%background%%",
+        "path": "~/.config/Code/User/settings.json",
+        "tokyonight_dark": "Tokyo Night",
+        "tokyonight_light": "Tokyo Night Light"
+      },
+      "commands": [
+        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%"
+      ]
     }
   ]
 }
