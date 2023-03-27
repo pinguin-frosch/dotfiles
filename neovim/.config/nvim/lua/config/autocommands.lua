@@ -8,27 +8,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-local big_file_group = vim.api.nvim_create_augroup('BigFile', { clear = true })
-vim.api.nvim_create_autocmd('BufReadPre', {
+-- Cerrar páginas de ayuda con q
+local close_files = vim.api.nvim_create_augroup('CloseFiles', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
   callback = function()
-    local max_size = 100 * 1024 -- 100 KB
-    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
-    if ok and stats and stats.size > max_size then
-      vim.b.big_file = true
-      return true
-    end
+    vim.keymap.set('n', 'q', '<cmd>q<cr>', { buffer = true, silent = true })
   end,
-  group = big_file_group,
-  pattern = '*',
+  group = close_files,
+  pattern = 'help',
 })
-vim.api.nvim_create_autocmd('BufReadPost', {
-  callback = function()
-    if vim.b.big_file then
-      print('Big file detected, syntax highlighting disabled for performance reasons.')
-      vim.cmd('syntax off')
-    end
-  end,
-  group = big_file_group,
-  pattern = '*',
-})
-

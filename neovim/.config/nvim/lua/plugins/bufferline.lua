@@ -1,6 +1,7 @@
 return {
   -- Barra con los buffers
   'akinsho/bufferline.nvim',
+  event = { 'BufReadPre', 'BufNewFile', 'BufWinEnter' },
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },

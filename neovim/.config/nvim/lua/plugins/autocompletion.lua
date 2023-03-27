@@ -1,15 +1,11 @@
 return {
   {
     'L3MON4D3/LuaSnip',
-    event = 'BufReadPost',
-    dependencies = {
-      'rafamadriz/friendly-snippets',
-      config = function()
-        require('luasnip.loaders.from_vscode').lazy_load()
-      end,
-    },
+    event = 'InsertEnter',
+    dependencies = { 'rafamadriz/friendly-snippets' },
     config = function()
       local luasnip = require('luasnip')
+      require('luasnip.loaders.from_vscode').lazy_load()
       vim.keymap.set({ 'i', 's' }, '<C-k>', function()
         if luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
@@ -29,24 +25,28 @@ return {
   },
   {
     'hrsh7th/nvim-cmp',
-    event = 'BufReadPost',
+    event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim'
     },
     opts = function()
       local cmp = require('cmp')
 
       -- Agregar paréntesis al completar funciones u otros
-      cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').confirm_done)
+      cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
 
       return {
         snippet = {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
           end,
+        },
+        formatting = {
+          format = require('lspkind').cmp_format({ maxwidth = 50 }),
         },
         completion = {
           completeopt = 'menu,menuone,noinsert',

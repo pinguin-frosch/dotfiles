@@ -63,14 +63,27 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Disminuir el tiempo de actualización
-vim.o.updatetime = 300
-vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.updatetime = 100
+vim.o.timeoutlen = 1000
+
+-- No guardar archivos de backup
+vim.o.backup = false
+vim.o.writebackup = false
+
+-- No guardar archivos de swap
+vim.o.swapfile = false
+
+-- No mostrar el modo
+vim.o.showmode = false
+
+-- Limitar opciones de autocompletado
+vim.o.pumheight = 15
 
 -- Activar colores de terminal
 vim.o.termguicolors = true
 
 -- Mantener un borde al bajar o subir
 vim.o.scrolloff = 5
+vim.o.sidescrolloff = 5
 
 return theme

@@ -19,5 +19,12 @@ return {
   },
 
   -- Detectar indentación
-  'tpope/vim-sleuth'
+  'tpope/vim-sleuth',
+
+  -- Mejorar el manejo de archivos grandes
+  {
+    'lunarvim/bigfile.nvim',
+    config = true,
+    event = { 'FileReadPre', 'BufReadPre', 'User FileOpened' },
+  },
 }
