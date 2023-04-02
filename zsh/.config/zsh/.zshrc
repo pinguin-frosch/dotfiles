@@ -10,6 +10,10 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=
 autoload -Uz compinit
 compinit
 
+# Activar zoxide
+eval "$(zoxide init zsh)"
+alias y="z"
+
 # Prompt de la terminal
 autoload -U colors && colors
 PROMPT=" %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%}\$vcs_info_msg_0_ "

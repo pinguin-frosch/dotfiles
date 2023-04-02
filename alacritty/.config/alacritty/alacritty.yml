@@ -11,7 +11,7 @@ font:
   normal:
     family: FantasqueSansMono Nerd Font
     style: Regular
-  size: 15.5
+  size: 16
 
 import:
   - ~/.config/alacritty/themes/catppuccin-light.yml
