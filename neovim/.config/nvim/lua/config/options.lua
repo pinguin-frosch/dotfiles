@@ -11,8 +11,8 @@ local theme = 'catppuccin'
 -- Ocultar barra de comandos
 vim.o.cmdheight = 1
 
--- Activar barra de estado
-vim.o.laststatus = 2
+-- Activar barra de estado global
+vim.o.laststatus = 3
 
 -- No cortar las líneas por defecto
 vim.o.wrap = false

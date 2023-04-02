@@ -17,3 +17,14 @@ vim.api.nvim_create_autocmd('FileType', {
   group = close_files,
   pattern = 'help',
 })
+
+-- Quitar números en terminal
+local no_numbers = vim.api.nvim_create_augroup('NoNumbers', { clear = true })
+vim.api.nvim_create_autocmd('TermOpen', {
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+  group = no_numbers,
+  pattern = '*',
+})

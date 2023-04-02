@@ -53,6 +53,7 @@ return {
         },
         sources = {
           { name = 'nvim_lsp' },
+          { name = 'cmp_nvim_r' },
           { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
