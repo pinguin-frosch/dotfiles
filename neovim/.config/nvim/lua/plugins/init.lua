@@ -25,6 +25,6 @@ return {
   {
     'lunarvim/bigfile.nvim',
     config = true,
-    event = { 'FileReadPre', 'BufReadPre', 'User FileOpened' },
+    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
   },
 }

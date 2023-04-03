@@ -3,10 +3,11 @@ return {
   version = false,
   build = ':TSUpdate',
   event = { 'BufRead', 'BufNewFile', 'BufWinEnter' },
-  dependencies = { 'HiPhish/nvim-ts-rainbow2' },
+  dependencies = { 'HiPhish/nvim-ts-rainbow2', 'nvim-treesitter/playground' },
   config = function()
     require('nvim-treesitter.configs').setup({
       highlight = { enable = true },
+      playground = { enable = true },
       rainbow = {
         enable = true,
         strategy = require('ts-rainbow.strategy.local'),
