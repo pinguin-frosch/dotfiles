@@ -25,6 +25,14 @@ return {
   {
     'lunarvim/bigfile.nvim',
     config = true,
-    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
+    event = { 'BufReadPre' },
+  },
+
+  -- Manejar cambios en líneas temporales
+  {
+    'mbbill/undotree',
+    config = function()
+      vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
+    end
   },
 }

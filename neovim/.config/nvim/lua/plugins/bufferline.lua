@@ -1,7 +1,6 @@
 return {
   -- Barra con los buffers
   'akinsho/bufferline.nvim',
-  event = { 'BufReadPre', 'BufNewFile', 'BufWinEnter' },
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },
@@ -20,10 +19,7 @@ return {
       vim.cmd('BufferLineMoveNext')
     end, { silent = true })
     vim.keymap.set('n', '<leader>bc', function()
-      vim.cmd('bdelete')
-    end, { silent = true })
-    vim.keymap.set('n', '<leader>bC', function()
-      vim.cmd('bdelete!')
+      vim.cmd('confirm bdelete')
     end, { silent = true })
   end,
 }

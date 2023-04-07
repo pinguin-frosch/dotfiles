@@ -1,6 +1,7 @@
 return {
   {
     'jalvesaq/Nvim-R',
+    ft = { 'r', 'rmd', 'quarto', 'rnoweb', 'rhelp' },
     config = function()
       vim.g.R_user_maps_only = 1
       vim.g.R_assign = 0
@@ -18,6 +19,7 @@ return {
     end
   },
   {
-    'jalvesaq/cmp-nvim-r'
+    'jalvesaq/cmp-nvim-r',
+    ft = { 'r', 'rmd', 'quarto', 'rnoweb', 'rhelp' },
   }
 }

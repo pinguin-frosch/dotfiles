@@ -86,4 +86,7 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
 
+-- Barra de estado casi por defecto
+vim.o.statusline = '%-(%{get(b:,"gitsigns_head","")} %)%<%f %h%m%r%=%-14.(%l,%c%V%) %P'
+
 return theme

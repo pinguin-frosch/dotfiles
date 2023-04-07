@@ -4,8 +4,8 @@ return {
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },
-  config = true,
-  keys = {
-    { '<leader>e', function() vim.cmd('NvimTreeToggle') end, desc = 'Open File Explorer' }
-  },
+  config = function()
+    require('nvim-tree').setup()
+    vim.keymap.set('n', '<leader>e', vim.cmd.NvimTreeToggle, { desc = 'Open File Explorer' })
+  end,
 }

@@ -5,8 +5,11 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'folke/neodev.nvim',
     },
     config = function()
+      require('neodev').setup()
+
       local servers = require('plugins.lsp.config').servers
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -30,11 +33,8 @@ return {
           })
         end
       })
-
     end,
   },
-  {
-    'b0o/schemastore.nvim',
-    lazy = true
-  }
+
+  'b0o/schemastore.nvim',
 }

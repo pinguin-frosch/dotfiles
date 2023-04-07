@@ -5,6 +5,10 @@ M.servers = {
         init_options = {
             provideFormatter = false,
         },
+        json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+        }
     },
     clangd = {},
     gopls = {},
@@ -46,6 +50,8 @@ function M.on_attach(client, bufnr)
 
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+    nmap('gl', vim.diagnostic.open_float, 'Open Diagnostic Float')
 
     -- Atajos menos usados de LSP
     nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
