@@ -1,9 +1,11 @@
 {
   "variables": {
-    "theme": "catppuccin",
-    "background": "light",
-    "keyboard": "pro",
-    "taskbar": "pro",
+    "global": {
+      "background": "light",
+      "keyboard": "pro",
+      "taskbar": "pro",
+      "theme": "catppuccin"
+    },
     "applications": {
       "alacritty": {
         "path": "~/.config/alacritty/alacritty.yml"
@@ -64,123 +66,125 @@
       }
     }
   },
-  "background": [
-    {
-      "name": "neovim",
-      "commands": [
-        "sed -i \"6s|background = '.*'|background = '%background%'|\" %path%",
-        "nvim --server /tmp/nvim.socket --remote-send \":set background=%background%\u003cCR\u003e\""
-      ]
-    },
-    {
-      "name": "kitty",
-      "commands": [
-        "sed -i \"6s|-.*\\.|-%background%.|\" %path%",
-        "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-      ]
-    },
-    {
-      "name": "alacritty",
-      "commands": [
-        "sed -i '17s|\\(s/.*-\\).*|\\1%background%.yml|' %path%"
-      ]
-    },
-    {
-      "name": "tmux",
-      "commands": [
-        "sed -i '2s|\\(s/.*-\\).*|\\1%background%.conf|' %path%",
-        "tmux source-file %path%"
-      ]
-    },
-    {
-      "name": "vscode",
-      "commands": [
-        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%%theme%_%background%%\",|' %path%"
-      ]
-    },
-    {
-      "name": "kde",
-      "commands": [
-        "lookandfeeltool -a %background_%background%% \u003e/dev/null 2\u003e\u00261"
-      ]
-    },
-    {
-      "name": "google chrome",
-      "commands": [
-        "sed -i '%background_%background%%' %path%"
-      ]
-    },
-    {
-      "name": "obs",
-      "commands": [
-        "sed -i s|CurrentTheme3=.*|CurrentTheme3=%background_%background%%| %path%"
-      ]
-    },
-    {
-      "name": "onlyoffice",
-      "commands": [
-        "sed -i s|UITheme2=.*|UITheme2=theme-%background%| %path%"
-      ]
-    }
-  ],
-  "theme": [
-    {
-      "name": "neovim",
-      "commands": [
-        "sed -i \"9s|'.*'|'%theme%'|\" %path%",
-        "nvim --server /tmp/nvim.socket --remote-send \":colorscheme %theme%\u003cCR\u003e\""
-      ]
-    },
-    {
-      "name": "kitty",
-      "commands": [
-        "sed -i 6s|s/.*-|s/%theme%-| %path%",
-        "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-      ]
-    },
-    {
-      "name": "alacritty",
-      "commands": [
-        "sed -i 17s|s/.*-|s/%theme%-| %path%"
-      ]
-    },
-    {
-      "name": "tmux",
-      "commands": [
-        "sed -i 2s|s/.*-|s/%theme%-| %path%",
-        "tmux source-file %path%"
-      ]
-    },
-    {
-      "name": "vscode",
-      "commands": [
-        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%%theme%_%background%%\",|' %path%"
-      ]
-    },
-    {
-      "name": "insomnia",
-      "commands": [
-        "sed -i 's|\"lightTheme\":\"[^\"]*\"|\"lightTheme\":\"%%theme%_light%\"|' %path%",
-        "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%%theme%_dark%\"|' %path%"
-      ]
-    }
-  ],
-  "keyboard": [
-    {
-      "name": "kde",
-      "commands": [
-        "setxkbmap -layout %keyboard_%keyboard%%"
-      ]
-    }
-  ],
-  "taskbar": [
-    {
-      "name": "kde",
-      "commands": [
-        "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \"%taskbar_%taskbar%%\"",
-        "kwriteconfig5 --file 'kwinrc' --group 'Plugins' --key 'slideEnabled' '%slide_%taskbar%%'",
-        "qdbus org.kde.KWin /KWin reconfigure"
-      ]
-    }
-  ]
+  "commands": {
+    "background": [
+      {
+        "name": "neovim",
+        "commands": [
+          "sed -i \"6s|background = '.*'|background = '%background%'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":set background=%background%\u003cCR\u003e\""
+        ]
+      },
+      {
+        "name": "kitty",
+        "commands": [
+          "sed -i \"6s|-.*\\.|-%background%.|\" %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ]
+      },
+      {
+        "name": "alacritty",
+        "commands": [
+          "sed -i '17s|\\(s/.*-\\).*|\\1%background%.yml|' %path%"
+        ]
+      },
+      {
+        "name": "tmux",
+        "commands": [
+          "sed -i '2s|\\(s/.*-\\).*|\\1%background%.conf|' %path%",
+          "tmux source-file %path%"
+        ]
+      },
+      {
+        "name": "vscode",
+        "commands": [
+          "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%%theme%_%background%%\",|' %path%"
+        ]
+      },
+      {
+        "name": "kde",
+        "commands": [
+          "lookandfeeltool -a %background_%background%% \u003e/dev/null 2\u003e\u00261"
+        ]
+      },
+      {
+        "name": "google chrome",
+        "commands": [
+          "sed -i '%background_%background%%' %path%"
+        ]
+      },
+      {
+        "name": "obs",
+        "commands": [
+          "sed -i s|CurrentTheme3=.*|CurrentTheme3=%background_%background%%| %path%"
+        ]
+      },
+      {
+        "name": "onlyoffice",
+        "commands": [
+          "sed -i s|UITheme2=.*|UITheme2=theme-%background%| %path%"
+        ]
+      }
+    ],
+    "keyboard": [
+      {
+        "name": "kde",
+        "commands": [
+          "setxkbmap -layout %keyboard_%keyboard%%"
+        ]
+      }
+    ],
+    "taskbar": [
+      {
+        "name": "kde",
+        "commands": [
+          "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \"%taskbar_%taskbar%%\"",
+          "kwriteconfig5 --file 'kwinrc' --group 'Plugins' --key 'slideEnabled' '%slide_%taskbar%%'",
+          "qdbus org.kde.KWin /KWin reconfigure"
+        ]
+      }
+    ],
+    "theme": [
+      {
+        "name": "neovim",
+        "commands": [
+          "sed -i \"9s|'.*'|'%theme%'|\" %path%",
+          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme %theme%\u003cCR\u003e\""
+        ]
+      },
+      {
+        "name": "kitty",
+        "commands": [
+          "sed -i 6s|s/.*-|s/%theme%-| %path%",
+          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
+        ]
+      },
+      {
+        "name": "alacritty",
+        "commands": [
+          "sed -i 17s|s/.*-|s/%theme%-| %path%"
+        ]
+      },
+      {
+        "name": "tmux",
+        "commands": [
+          "sed -i 2s|s/.*-|s/%theme%-| %path%",
+          "tmux source-file %path%"
+        ]
+      },
+      {
+        "name": "vscode",
+        "commands": [
+          "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%%theme%_%background%%\",|' %path%"
+        ]
+      },
+      {
+        "name": "insomnia",
+        "commands": [
+          "sed -i 's|\"lightTheme\":\"[^\"]*\"|\"lightTheme\":\"%%theme%_light%\"|' %path%",
+          "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%%theme%_dark%\"|' %path%"
+        ]
+      }
+    ]
+  }
 }
