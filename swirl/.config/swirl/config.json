@@ -2,14 +2,15 @@
   "variables": {
     "theme": "catppuccin",
     "background": "light",
+    "keyboard": "pro",
+    "taskbar": "pro",
     "applications": {
       "alacritty": {
         "path": "~/.config/alacritty/alacritty.yml"
       },
       "google chrome": {
-        "g_dark": "1s|#|--|g",
-        "g_light": "1s|--|#|g",
-        "parse_background": "%g_%background%%",
+        "background_dark": "1s|#|--|g",
+        "background_light": "1s|--|#|g",
         "path": "~/.config/chrome-flags.conf"
       },
       "insomnia": {
@@ -24,9 +25,14 @@
         "tokyonight_light": "tokyo-night-light"
       },
       "kde": {
-        "k_dark": "org.kde.breezedark.desktop",
-        "k_light": "org.kde.breeze.desktop",
-        "parse_background": "%k_%background%%"
+        "background_dark": "org.kde.breezedark.desktop",
+        "background_light": "org.kde.breeze.desktop",
+        "keyboard_latam": "latam -option",
+        "keyboard_pro": "pro -option caps:swapescape",
+        "slide_default": "--delete",
+        "slide_pro": "false",
+        "taskbar_default": "panels().map(p=\u003ep.remove());desktops().map(d=\u003ed.widgets().map(w=\u003ew.remove()));let p=new Panel;p.location='bottom';p.height=2*Math.floor(gridUnit*2.3/2);let m=p.addWidget('org.kde.plasma.kickoff');m.currentConfigGroup=['Shortcuts'];m.writeConfig('global','Alt+F1');p.addWidget('org.kde.plasma.pager');let t=p.addWidget('org.kde.plasma.icontasks');t.currentConfigGroup=['General'];t.writeConfig('launchers',['applications:kitty.desktop','applications:google-chrome.desktop','applications:org.kde.dolphin.desktop']);p.addWidget('org.kde.plasma.marginsseparator');p.addWidget('org.kde.plasma.systemtray');c=p.addWidget('org.kde.plasma.digitalclock');c.currentConfigGroup=['Appearance'];c.writeConfig('showWeekNumbers',!0);p.addWidget('org.kde.plasma.showdesktop')",
+        "taskbar_pro": "panels().map(p=\u003ep.remove());desktops().map(d=\u003e{d.widgets().map(w=\u003ew.remove());let s=desktopById(d.addWidget('org.kde.plasma.systemtray',0,1010,500,70).readConfig('SystrayContainmentId'));s.currentConfigGroup=['General'];s.writeConfig('showAllItems',true);s.writeConfig('iconSpacing',1);c=d.addWidget('org.kde.plasma.digitalclock',1620,1010,300,70);c.writeConfig('UserBackgroundHints','StandardBackground');c.currentConfigGroup=['Appearance'];c.writeConfig('showSeconds',true);c.writeConfig('dateDisplayFormat','BesideTime');c.writeConfig('showWeekNumbers',true)});"
       },
       "kitty": {
         "path": "~/.config/kitty/kitty.conf"
@@ -35,9 +41,8 @@
         "path": "~/.config/nvim/lua/config/options.lua"
       },
       "obs": {
-        "o_dark": "Yami",
-        "o_light": "Light",
-        "parse_background": "%o_%background%%",
+        "background_dark": "Yami",
+        "background_light": "Light",
         "path": "~/.config/obs-studio/global.ini"
       },
       "onlyoffice": {
@@ -53,7 +58,6 @@
         "catppuccin_light": "Catppuccin Latte",
         "onedark_dark": "Atom One Dark",
         "onedark_light": "Atom One Light",
-        "parse_theme": "%%theme%_%background%%",
         "path": "~/.config/Code/User/settings.json",
         "tokyonight_dark": "Tokyo Night",
         "tokyonight_light": "Tokyo Night Light"
@@ -91,25 +95,25 @@
     {
       "name": "vscode",
       "commands": [
-        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%"
+        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%%theme%_%background%%\",|' %path%"
       ]
     },
     {
       "name": "kde",
       "commands": [
-        "lookandfeeltool -a %parse_background% \u003e/dev/null 2\u003e\u00261"
+        "lookandfeeltool -a %background_%background%% \u003e/dev/null 2\u003e\u00261"
       ]
     },
     {
       "name": "google chrome",
       "commands": [
-        "sed -i '%parse_background%' %path%"
+        "sed -i '%background_%background%%' %path%"
       ]
     },
     {
       "name": "obs",
       "commands": [
-        "sed -i s|CurrentTheme3=.*|CurrentTheme3=%parse_background%| %path%"
+        "sed -i s|CurrentTheme3=.*|CurrentTheme3=%background_%background%%| %path%"
       ]
     },
     {
@@ -150,7 +154,7 @@
     {
       "name": "vscode",
       "commands": [
-        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%parse_theme%\",|' %path%"
+        "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%%theme%_%background%%\",|' %path%"
       ]
     },
     {
@@ -158,6 +162,24 @@
       "commands": [
         "sed -i 's|\"lightTheme\":\"[^\"]*\"|\"lightTheme\":\"%%theme%_light%\"|' %path%",
         "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%%theme%_dark%\"|' %path%"
+      ]
+    }
+  ],
+  "keyboard": [
+    {
+      "name": "kde",
+      "commands": [
+        "setxkbmap -layout %keyboard_%keyboard%%"
+      ]
+    }
+  ],
+  "taskbar": [
+    {
+      "name": "kde",
+      "commands": [
+        "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \"%taskbar_%taskbar%%\"",
+        "kwriteconfig5 --file 'kwinrc' --group 'Plugins' --key 'slideEnabled' '%slide_%taskbar%%'",
+        "qdbus org.kde.KWin /KWin reconfigure"
       ]
     }
   ]
