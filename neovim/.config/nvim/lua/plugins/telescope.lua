@@ -14,5 +14,6 @@ return {
     vim.keymap.set('n', '<leader>sg', '<CMD>Telescope live_grep<CR>', { desc = 'Search by Grep' })
     vim.keymap.set('n', '<leader>ss', '<CMD>Telescope lsp_document_symbols<CR>', { desc = 'Search symbols in buffer' })
     vim.keymap.set('n', '<leader>sS', '<CMD>Telescope lsp_workspace_symbols<CR>', { desc = 'Search symbols in workspace' })
+    vim.keymap.set('n', '<leader>sc', '<CMD>Telescope resume<CR>', { desc = 'Continue last search' })
   end,
 }
