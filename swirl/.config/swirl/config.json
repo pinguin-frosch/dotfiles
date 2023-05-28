@@ -8,9 +8,6 @@
       "theme": "catppuccin"
     },
     "applications": {
-      "alacritty": {
-        "path": "~/.config/alacritty/alacritty.yml"
-      },
       "google chrome": {
         "background_dark": "1s|#|--|g",
         "background_light": "1s|--|#|g",
@@ -32,15 +29,12 @@
         "background_light": "org.kde.breeze.desktop",
         "keyboard_latam": "latam -option",
         "keyboard_pro": "pro -option caps:swapescape",
-        "shortcut_default": "kc() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kd \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\"; kd \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\"; kd \"kglobalshortcutsrc\" \"kitty.desktop\" \"_launch\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"Meta+$i,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"Meta+0,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 5`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Ctrl+F$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done",
-        "shortcut_pro": "kc() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kc \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\" \"0\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\" \"Meta+B,none,Google Chrome\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_k_friendly_name\" \"Google Chrome\"; kc \"kglobalshortcutsrc\" \"kitty.desktop\" \"_launch\" \"Meta+T,none,kitty\"; kc \"kglobalshortcutsrc\" \"kitty.desktop\" \"_k_friendly_name\" \"kitty\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"none,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"none,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 5`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Meta+$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 1\" \"Meta+!,none,Ventana al escritorio 1\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 2\" \"Meta+\\\",none,Ventana al escritorio 2\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 3\" \"Meta+#,none,Ventana al escritorio 3\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 4\" \"Meta+$,none,Ventana al escritorio 4\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 5\" \"Meta+%,none,Ventana al escritorio 5\"",
+        "shortcut_default": "kc() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kd \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\"; kd \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\"; kd \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_launch\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"Meta+$i,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"Meta+0,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 5`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Ctrl+F$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done",
+        "shortcut_pro": "kc() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kc \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\" \"0\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\" \"Meta+B,none,Google Chrome\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_k_friendly_name\" \"Google Chrome\"; kc \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_launch\" \"Meta+T,none,WezTerm\"; kc \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_k_friendly_name\" \"WezTerm\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"none,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"none,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 5`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Meta+$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 1\" \"Meta+!,none,Ventana al escritorio 1\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 2\" \"Meta+\\\",none,Ventana al escritorio 2\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 3\" \"Meta+#,none,Ventana al escritorio 3\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 4\" \"Meta+$,none,Ventana al escritorio 4\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 5\" \"Meta+%,none,Ventana al escritorio 5\"",
         "slide_default": "--delete",
         "slide_pro": "false",
-        "taskbar_default": "panels().map(p=\u003ep.remove());desktops().map(d=\u003ed.widgets().map(w=\u003ew.remove()));let p=new Panel;p.location='bottom';p.height=2*Math.floor(gridUnit*2.3/2);let m=p.addWidget('org.kde.plasma.kickoff');m.currentConfigGroup=['Shortcuts'];m.writeConfig('global','Alt+F1');p.addWidget('org.kde.plasma.pager');let t=p.addWidget('org.kde.plasma.icontasks');t.currentConfigGroup=['General'];t.writeConfig('launchers',['applications:kitty.desktop','applications:google-chrome.desktop','applications:org.kde.dolphin.desktop']);p.addWidget('org.kde.plasma.marginsseparator');p.addWidget('org.kde.plasma.systemtray');c=p.addWidget('org.kde.plasma.digitalclock');c.currentConfigGroup=['Appearance'];c.writeConfig('showWeekNumbers',!0);p.addWidget('org.kde.plasma.showdesktop')",
+        "taskbar_default": "panels().map(p=\u003ep.remove());desktops().map(d=\u003ed.widgets().map(w=\u003ew.remove()));let p=new Panel;p.location='bottom';p.height=2*Math.floor(gridUnit*2.3/2);let m=p.addWidget('org.kde.plasma.kickoff');m.currentConfigGroup=['Shortcuts'];m.writeConfig('global','Alt+F1');p.addWidget('org.kde.plasma.pager');let t=p.addWidget('org.kde.plasma.icontasks');t.currentConfigGroup=['General'];t.writeConfig('launchers',['applications:org.wezfurlong.wezterm.desktop','applications:google-chrome.desktop','applications:org.kde.dolphin.desktop']);p.addWidget('org.kde.plasma.marginsseparator');p.addWidget('org.kde.plasma.systemtray');c=p.addWidget('org.kde.plasma.digitalclock');c.currentConfigGroup=['Appearance'];c.writeConfig('showWeekNumbers',!0);p.addWidget('org.kde.plasma.showdesktop')",
         "taskbar_pro": "panels().map(p=\u003ep.remove());desktops().map(d=\u003e{d.widgets().map(w=\u003ew.remove());let s=desktopById(d.addWidget('org.kde.plasma.systemtray',0,1010,500,70).readConfig('SystrayContainmentId'));s.currentConfigGroup=['General'];s.writeConfig('showAllItems',true);s.writeConfig('iconSpacing',1);c=d.addWidget('org.kde.plasma.digitalclock',1620,1010,300,70);c.writeConfig('UserBackgroundHints','StandardBackground');c.currentConfigGroup=['Appearance'];c.writeConfig('showSeconds',true);c.writeConfig('dateDisplayFormat','BesideTime');c.writeConfig('showWeekNumbers',true)});"
-      },
-      "kitty": {
-        "path": "~/.config/kitty/kitty.conf"
       },
       "neovim": {
         "path": "~/.config/nvim/lua/config/options.lua"
@@ -66,6 +60,9 @@
         "path": "~/.config/Code/User/settings.json",
         "tokyonight_dark": "Tokyo Night",
         "tokyonight_light": "Tokyo Night Light"
+      },
+      "wezterm": {
+        "path": "~/.config/wezterm/wezterm.lua"
       }
     }
   },
@@ -79,16 +76,9 @@
         ]
       },
       {
-        "name": "kitty",
+        "name": "wezterm",
         "commands": [
-          "sed -i \"6s|-.*\\.|-%background%.|\" %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ]
-      },
-      {
-        "name": "alacritty",
-        "commands": [
-          "sed -i '17s|\\(s/.*-\\).*|\\1%background%.yml|' %path%"
+          "sed -i \"s/theme = '.*'/theme = '%theme%-%background%'/\" %path%"
         ]
       },
       {
@@ -166,16 +156,9 @@
         ]
       },
       {
-        "name": "kitty",
+        "name": "wezterm",
         "commands": [
-          "sed -i 6s|s/.*-|s/%theme%-| %path%",
-          "bash -c 'for i in $(pgrep kitty); do kill -SIGUSR1 $i; done'"
-        ]
-      },
-      {
-        "name": "alacritty",
-        "commands": [
-          "sed -i 17s|s/.*-|s/%theme%-| %path%"
+          "sed -i \"s/theme = '.*'/theme = '%theme%-%background%'/\" %path%"
         ]
       },
       {
