@@ -7,11 +7,5 @@ return {
   },
   {
     'Shatur/neovim-ayu'
-  },
-  {
-    'folke/tokyonight.nvim',
-    opts = {
-      style = 'night'
-    }
   }
 }

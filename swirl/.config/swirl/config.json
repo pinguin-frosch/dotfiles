@@ -20,9 +20,7 @@
         "catppuccin_light": "catppuccin-latte",
         "onedark_dark": "one-dark",
         "onedark_light": "one-light",
-        "path": "~/.config/Insomnia/insomnia.Settings.db",
-        "tokyonight_dark": "tokyo-night",
-        "tokyonight_light": "tokyo-night-light"
+        "path": "~/.config/Insomnia/insomnia.Settings.db"
       },
       "kde": {
         "background_dark": "org.kde.breezedark.desktop",
@@ -57,9 +55,7 @@
         "catppuccin_light": "Catppuccin Latte",
         "onedark_dark": "Atom One Dark",
         "onedark_light": "Atom One Light",
-        "path": "~/.config/Code/User/settings.json",
-        "tokyonight_dark": "Tokyo Night",
-        "tokyonight_light": "Tokyo Night Light"
+        "path": "~/.config/Code/User/settings.json"
       },
       "wezterm": {
         "path": "~/.config/wezterm/wezterm.lua"
