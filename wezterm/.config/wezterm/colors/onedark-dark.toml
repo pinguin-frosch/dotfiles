@@ -1,0 +1,27 @@
+[colors]
+background = '#282c34'
+foreground = '#abb2bf'
+ansi = [
+  '#282c34',
+  '#e06c75',
+  '#98c379',
+  '#e5c07b',
+  '#61afef',
+  '#c678dd',
+  '#56b6c2',
+  '#abb2bf',
+]
+brights = [
+  '#3f3f3f',
+  '#e06c75',
+  '#98c379',
+  '#e5c07b',
+  '#61afef',
+  '#c678dd',
+  '#56b6c2',
+  '#bfc5ce',
+]
+
+[metadata]
+author = 'PinguinFrosch'
+name = 'onedark-dark'

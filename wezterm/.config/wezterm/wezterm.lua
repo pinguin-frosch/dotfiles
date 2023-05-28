@@ -1,18 +1,21 @@
 local wezterm = require('wezterm')
-local config = {}
+local theme = 'catppuccin-light'
 
 -- Opciones básicas
-config.font = wezterm.font('FantasqueSansM Nerd Font')
-config.max_fps = 144
-config.cursor_blink_rate = 0
-config.font_size = 16
-config.enable_tab_bar = false
-config.color_scheme = 'Catppuccin Mocha'
-config.window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0
+local config = {
+    font = wezterm.font('FantasqueSansM Nerd Font'),
+    max_fps = 144,
+    cursor_blink_rate = 0,
+    font_size = 16,
+    enable_tab_bar = false,
+    color_scheme = theme,
+    force_reverse_video_cursor = true,
+    window_padding = {
+        left = 0,
+        right = 0,
+        top = 0,
+        bottom = 0
+    },
 }
 
 -- Alternar ligaduras

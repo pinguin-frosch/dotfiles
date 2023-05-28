@@ -1,0 +1,31 @@
+[colors]
+background = '#eff1f5'
+foreground = '#4c4f69'
+ansi = [
+  '#bcc0cc',
+  '#d20f39',
+  '#40a02b',
+  '#df8e1d',
+  '#1e66f5',
+  '#ea76cb',
+  '#179299',
+  '#5c5f77',
+]
+brights = [
+  '#acb0be',
+  '#d20f39',
+  '#40a02b',
+  '#df8e1d',
+  '#1e66f5',
+  '#ea76cb',
+  '#179299',
+  '#6c6f85',
+]
+
+[colors.indexed]
+16 = '#fe640b'
+17 = '#dc8a78'
+
+[metadata]
+author = 'PinguinFrosch'
+name = 'catppuccin-light'
