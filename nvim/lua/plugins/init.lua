@@ -35,4 +35,12 @@ return {
       vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
     end
   },
+
+  {
+    'ThePrimeagen/vim-be-good'
+  },
+
+  {
+    'brenoprata10/nvim-highlight-colors'
+  }
 }

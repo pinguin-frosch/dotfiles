@@ -1,5 +1,5 @@
 # Opciones básicas
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+HISTFILE=${XDG_STATE_HOME:-$HOME}/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt nomatch
@@ -8,7 +8,7 @@ zstyle :compinstall filename '${ZDOTDIR:-$HOME}/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit
-compinit
+compinit -d ~/.cache/zcompdump-$ZSH_VERSION
 
 # Prompt de la terminal
 autoload -U colors && colors
@@ -50,7 +50,7 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias g="git status"
 alias reload="source ~/.zshrc"
-alias zshupdate="find ${ZDOTDIR:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
+alias zshupdate="find ${XDG_STATE_HOME:-$HOME}/.zsh_plugins -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull"
 
 # Funciones
 function gamefiles() {
@@ -77,13 +77,13 @@ github_plugins=(
 )
 
 for plugin in $github_plugins; do
-  if [[ ! -d ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin ]]; then
-    mkdir -p ${ZDOTDIR:-$HOME}/.zsh_plugins/${plugin%/*}
-    git clone --depth 1 --recursive https://github.com/$plugin.git ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin
+  if [[ ! -d ${XDG_STATE_HOME:-$HOME}/.zsh_plugins/$plugin ]]; then
+    mkdir -p ${XDG_STATE_HOME:-$HOME}/.zsh_plugins/${plugin%/*}
+    git clone --depth 1 --recursive https://github.com/$plugin.git ${XDG_STATE_HOME:-$HOME}/.zsh_plugins/$plugin
   fi
   for initscript in ${plugin#*/}.zsh ${plugin#*/}.plugin.zsh ${plugin#*/}.sh; do
-    if [[ -f ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin/$initscript ]]; then
-      source ${ZDOTDIR:-$HOME}/.zsh_plugins/$plugin/$initscript
+    if [[ -f ${XDG_STATE_HOME:-$HOME}/.zsh_plugins/$plugin/$initscript ]]; then
+      source ${XDG_STATE_HOME:-$HOME}/.zsh_plugins/$plugin/$initscript
       break
     fi
   done
