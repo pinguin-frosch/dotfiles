@@ -8,11 +8,6 @@
       "theme": "catppuccin"
     },
     "applications": {
-      "google chrome": {
-        "background_dark": "1s|#|--|g",
-        "background_light": "1s|--|#|g",
-        "path": "~/.config/chrome-flags.conf"
-      },
       "insomnia": {
         "ayu_dark": "ayu-dark",
         "ayu_light": "ayu-light",
@@ -68,7 +63,7 @@
         "name": "neovim",
         "commands": [
           "sed -i \"6s|background = '.*'|background = '%background%'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":set background=%background%\u003cCR\u003e\""
+          "bash -c \"for i in $(ls ${XDG_RUNTIME_DIR}/nvim.*.0); do nvim --server $i --remote-send ':set background=%background%\u003cCR\u003e'; done\""
         ]
       },
       {
@@ -94,12 +89,6 @@
         "name": "kde",
         "commands": [
           "lookandfeeltool -a %background_%background%% \u003e/dev/null 2\u003e\u00261"
-        ]
-      },
-      {
-        "name": "google chrome",
-        "commands": [
-          "sed -i '%background_%background%%' %path%"
         ]
       },
       {
@@ -148,7 +137,7 @@
         "name": "neovim",
         "commands": [
           "sed -i \"9s|'.*'|'%theme%'|\" %path%",
-          "nvim --server /tmp/nvim.socket --remote-send \":colorscheme %theme%\u003cCR\u003e\""
+          "bash -c \"for i in $(ls ${XDG_RUNTIME_DIR}/nvim.*.0); do nvim --server $i --remote-send ':colorscheme %theme%\u003cCR\u003e'; done\""
         ]
       },
       {
