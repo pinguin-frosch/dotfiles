@@ -18,6 +18,7 @@ export ANDROID_HOME=$XDG_DATA_HOME/android
 export R_ENVIRON_USER=$XDG_CONFIG_HOME/R/Renviron
 export CARGO_HOME=$XDG_DATA_HOME/cargo
 export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
 # Variables de entorno
 export EDITOR=nvim
