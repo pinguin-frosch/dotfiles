@@ -10,6 +10,7 @@ local config = {
     enable_tab_bar = false,
     color_scheme = theme,
     force_reverse_video_cursor = true,
+    audible_bell = 'Disabled',
     window_padding = {
         left = 0,
         right = 0,
