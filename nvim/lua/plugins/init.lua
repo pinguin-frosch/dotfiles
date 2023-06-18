@@ -18,9 +18,6 @@ return {
     config = true
   },
 
-  -- Detectar indentación
-  'tpope/vim-sleuth',
-
   -- Mejorar el manejo de archivos grandes
   {
     'lunarvim/bigfile.nvim',
@@ -36,11 +33,8 @@ return {
     end
   },
 
-  {
-    'ThePrimeagen/vim-be-good'
-  },
-
-  {
-    'brenoprata10/nvim-highlight-colors'
-  }
+  'tpope/vim-sleuth',
+  'brenoprata10/nvim-highlight-colors',
+  'b0o/SchemaStore.nvim',
+  'folke/neodev.nvim'
 }
