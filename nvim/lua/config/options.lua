@@ -29,7 +29,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Mostrar íconos para espacios, tabs, entre otros
 vim.o.list = true
-vim.o.listchars = 'tab:→ ,trail:·,space:·'
+vim.o.listchars = 'tab:→ ,trail:·,space:·,extends:»,precedes:«'
 
 -- Configurar tamaño de tab en espacios
 vim.o.tabstop = 4
