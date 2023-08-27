@@ -1,9 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
+  dependencies = { 'b0o/SchemaStore.nvim' },
   config = function()
-    require('neodev').setup()
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -60,7 +59,7 @@ return {
       on_attach = on_attach,
       capabilities = capabilities,
       init_options = {
-        provideFormatter = false
+        provideFormatter = true
       },
       settings = {
         json = {
@@ -75,6 +74,9 @@ return {
       capabilities = capabilities,
       settings = {
         Lua = {
+          diagnostics = {
+            globals = { 'vim' }
+          },
           workspace = {
             checkThirdParty = false
           }

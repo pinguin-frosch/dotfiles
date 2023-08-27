@@ -25,16 +25,18 @@ return {
     event = { 'BufReadPre' },
   },
 
-  -- Manejar cambios en líneas temporales
+  -- Renderizar los colores dentro del editor
   {
-    'mbbill/undotree',
-    config = function()
-      vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>')
-    end
+    'brenoprata10/nvim-highlight-colors',
+    keys = {
+      { '<leader>th', function()
+        require('nvim-highlight-colors').toggle()
+      end }
+    }
   },
 
-  'tpope/vim-sleuth',
-  'brenoprata10/nvim-highlight-colors',
-  'b0o/SchemaStore.nvim',
-  'folke/neodev.nvim'
+  {
+    'NMAC427/guess-indent.nvim',
+    config = true
+  }
 }
