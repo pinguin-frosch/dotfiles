@@ -20,8 +20,12 @@ return {
           require('luasnip').lsp_expand(args.body)
         end,
       },
+      preselect = cmp.PreselectMode.None,
       formatting = {
-        format = require('lspkind').cmp_format({ maxwidth = 50 }),
+        format = require('lspkind').cmp_format({
+          maxwidth = 50,
+          mode = 'symbol'
+        }),
       },
       completion = {
         completeopt = 'menu,menuone,noinsert',
