@@ -9,19 +9,5 @@ vim.keymap.set('n', '<Esc>', function()
   vim.cmd('nohl')
 end, { desc = 'Hide highlighting after searching', silent = true })
 
--- Atajo para alternar el estado de Copilot
-local active = true
-vim.keymap.set('n', '<leader>tc', function()
-  if active then
-    vim.cmd('Copilot disable')
-    print('Copilot disabled')
-  else
-    vim.cmd('Copilot enable')
-    print('Copilot enabled')
-  end
-  active = not active
-end, { desc = 'Toggle Copilot' })
-
 -- Desactivar el espacio en normal y visual
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
