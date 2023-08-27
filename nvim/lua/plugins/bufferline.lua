@@ -5,7 +5,11 @@ return {
     'nvim-tree/nvim-web-devicons'
   },
   config = function()
-    require('bufferline').setup()
+    require('bufferline').setup({
+      options = {
+        diagnostics = 'nvim_lsp'
+      }
+    })
     vim.keymap.set('n', '<M-j>', function()
       vim.cmd('BufferLineCyclePrev')
     end, { silent = true })
