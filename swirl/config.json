@@ -8,14 +8,14 @@
       "theme": "catppuccin"
     },
     "applications": {
-      "insomnia": {
+      "insomnium": {
         "ayu_dark": "ayu-dark",
         "ayu_light": "ayu-light",
         "catppuccin_dark": "catppuccin-mocha",
         "catppuccin_light": "catppuccin-latte",
         "onedark_dark": "one-dark",
         "onedark_light": "one-light",
-        "path": "~/.config/Insomnia/insomnia.Settings.db"
+        "path": "~/.config/Insomnium/insomnia.Settings.db"
       },
       "kde": {
         "background_dark": "org.kde.breezedark.desktop",
@@ -160,7 +160,7 @@
         ]
       },
       {
-        "name": "insomnia",
+        "name": "insomnium",
         "commands": [
           "sed -i 's|\"lightTheme\":\"[^\"]*\"|\"lightTheme\":\"%%theme%_light%\"|' %path%",
           "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%%theme%_dark%\"|' %path%"
