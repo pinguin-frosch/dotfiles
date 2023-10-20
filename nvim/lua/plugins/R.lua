@@ -17,9 +17,5 @@ return {
       vim.keymap.set('v', '<leader>rr', '<Plug>RSendSelection')
       vim.keymap.set('n', '<leader>rR', '<Plug>RSendFile')
     end
-  },
-  {
-    'jalvesaq/cmp-nvim-r',
-    ft = { 'r', 'rmd', 'quarto', 'rnoweb', 'rhelp' },
   }
 }
