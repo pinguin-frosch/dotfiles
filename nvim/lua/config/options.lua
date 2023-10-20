@@ -14,6 +14,9 @@ vim.o.cmdheight = 1
 -- Activar barra de estado global
 vim.o.laststatus = 3
 
+-- Destacar la línea en uso
+vim.o.cursorline = true
+
 -- No cortar las líneas por defecto
 vim.o.wrap = false
 
