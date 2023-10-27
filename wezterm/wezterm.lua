@@ -3,10 +3,10 @@ local theme = 'catppuccin-light'
 
 -- Opciones básicas
 local config = {
-    font = wezterm.font('FantasqueSansM Nerd Font'),
+    font = wezterm.font('Iosevka Nerd Font'),
     max_fps = 144,
     cursor_blink_rate = 0,
-    font_size = 16,
+    font_size = 13.5,
     enable_tab_bar = false,
     color_scheme = theme,
     force_reverse_video_cursor = true,
