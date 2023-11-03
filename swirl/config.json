@@ -2,6 +2,7 @@
   "variables": {
     "global": {
       "background": "light",
+      "font": "iosevka",
       "keyboard": "pro",
       "shortcut": "pro",
       "taskbar": "pro",
@@ -53,6 +54,14 @@
         "path": "~/.config/Code/User/settings.json"
       },
       "wezterm": {
+        "font_agave": "Agave Nerd Font",
+        "font_cascadia": "CaskaydiaCove NF SemiLight",
+        "font_fantasque": "FantasqueSansM Nerd Font",
+        "font_hack": "Hack Nerd Font",
+        "font_inconsolata": "Inconsolata Nerd Font",
+        "font_iosevka": "Iosevka Nerd Font",
+        "font_jetbrains": "JetBrainsMono Nerd Font",
+        "font_monoid": "Monoid Nerd Font",
         "path": "~/.config/wezterm/wezterm.lua"
       }
     }
@@ -101,6 +110,14 @@
         "name": "onlyoffice",
         "commands": [
           "sed -i s|UITheme2=.*|UITheme2=theme-%background%| %path%"
+        ]
+      }
+    ],
+    "font": [
+      {
+        "name": "wezterm",
+        "commands": [
+          "sed -i \"s|\\(wezterm\\.font('\\).*')|\\1%font_%font%%')|\" %path%"
         ]
       }
     ],
