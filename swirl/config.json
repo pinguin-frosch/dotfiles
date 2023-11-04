@@ -63,6 +63,16 @@
         "path": "~/.config/tmux/tmux.conf"
       },
       "vscode": {
+        "fonts": {
+          "agave": "Agave Nerd Font",
+          "cascadia": "CaskaydiaCove NF SemiLight",
+          "fantasque": "FantasqueSansM Nerd Font",
+          "hack": "Hack Nerd Font",
+          "inconsolata": "Inconsolata Nerd Font",
+          "iosevka": "Iosevka Nerd Font",
+          "jetbrains": "JetBrainsMono Nerd Font",
+          "monoid": "Monoid Nerd Font"
+        },
         "path": "~/.config/Code/User/settings.json",
         "themes": {
           "dark": {
@@ -144,6 +154,12 @@
         "name": "wezterm",
         "commands": [
           "sed -i \"s|\\(wezterm\\.font('\\).*')|\\1%fonts.%font%%')|\" %path%"
+        ]
+      },
+      {
+        "name": "vscode",
+        "commands": [
+          "sed -i 's|\\(\"editor\\.fontFamily\": \"\\).*|\\1%fonts.%font%%\",|' %path%"
         ]
       }
     ],
