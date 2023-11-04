@@ -3,6 +3,16 @@
     "global": {
       "background": "light",
       "font": "iosevka",
+      "fonts": {
+        "agave": "Agave Nerd Font",
+        "cascadia": "CaskaydiaCove NF SemiLight",
+        "fantasque": "FantasqueSansM Nerd Font",
+        "hack": "Hack Nerd Font",
+        "inconsolata": "Inconsolata Nerd Font",
+        "iosevka": "Iosevka Nerd Font",
+        "jetbrains": "JetBrainsMono Nerd Font",
+        "monoid": "Monoid Nerd Font"
+      },
       "keyboard": "pro",
       "shortcut": "pro",
       "taskbar": "pro",
@@ -63,16 +73,6 @@
         "path": "~/.config/tmux/tmux.conf"
       },
       "vscode": {
-        "fonts": {
-          "agave": "Agave Nerd Font",
-          "cascadia": "CaskaydiaCove NF SemiLight",
-          "fantasque": "FantasqueSansM Nerd Font",
-          "hack": "Hack Nerd Font",
-          "inconsolata": "Inconsolata Nerd Font",
-          "iosevka": "Iosevka Nerd Font",
-          "jetbrains": "JetBrainsMono Nerd Font",
-          "monoid": "Monoid Nerd Font"
-        },
         "path": "~/.config/Code/User/settings.json",
         "themes": {
           "dark": {
@@ -88,16 +88,6 @@
         }
       },
       "wezterm": {
-        "fonts": {
-          "agave": "Agave Nerd Font",
-          "cascadia": "CaskaydiaCove NF SemiLight",
-          "fantasque": "FantasqueSansM Nerd Font",
-          "hack": "Hack Nerd Font",
-          "inconsolata": "Inconsolata Nerd Font",
-          "iosevka": "Iosevka Nerd Font",
-          "jetbrains": "JetBrainsMono Nerd Font",
-          "monoid": "Monoid Nerd Font"
-        },
         "path": "~/.config/wezterm/wezterm.lua"
       }
     }
