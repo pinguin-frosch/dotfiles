@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Color del fondo del tema
-vim.o.background = 'dark'
+vim.o.background = 'light'
 
 -- Tema del editor
 local theme = 'catppuccin'
