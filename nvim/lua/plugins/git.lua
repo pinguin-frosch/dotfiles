@@ -1,12 +1,13 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      local gs = require('gitsigns')
-      gs.setup()
-      vim.keymap.set('n', '(h', gs.prev_hunk)
-      vim.keymap.set('n', ')h', gs.next_hunk)
-      vim.keymap.set('n', '<leader>gd', gs.diffthis)
-    end
+    cmd = 'Gitsigns',
+    event = { 'BufRead', 'BufNewFile' },
+    keys = {
+      { '(h', '<Cmd>Gitsigns prev_hunk<CR>', 'Go to previous hunk' },
+      { ')h', '<Cmd>Gitsigns next_hunk<CR>', 'Go to next hunk' },
+      { '<Leader>gd', '<Cmd>Gitsigns diffthis<CR>', 'Diff current file' },
+    },
+    config = true
   }
 }

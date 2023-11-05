@@ -3,7 +3,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'b0o/SchemaStore.nvim',
-    { 'folke/neodev.nvim', config = true },
+    { 'williamboman/mason.nvim', build = ':MasonUpdate', config = true }
   },
   config = function()
     local servers = { 'tsserver', 'clangd', 'gopls', 'pyright', 'rust_analyzer', 'r_language_server', 'dockerls',
