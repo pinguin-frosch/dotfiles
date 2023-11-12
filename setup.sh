@@ -8,12 +8,11 @@ usage() {
 }
 
 apply() {
-    stow --target=$HOME "$1" x
     if [ ! -d "$HOME/.ssh" ]; then
         mkdir "$HOME/.ssh"
     fi
     stow --target=$HOME/.ssh "$1" ssh
-    stow --target=${XDG_CONFIG_HOME:-$HOME/.config} "$1" . --ignore="^ssh" --ignore="^x" --ignore="^setup.sh"
+    stow --target=${XDG_CONFIG_HOME:-$HOME/.config} "$1" . --ignore="^ssh" --ignore="^setup.sh"
 }
 
 if [ $# -ne 1 ]; then
