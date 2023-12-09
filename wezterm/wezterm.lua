@@ -3,7 +3,8 @@ local theme = 'catppuccin-light'
 
 -- Opciones básicas
 local config = {
-    font = wezterm.font('Iosevka Nerd Font'),
+    font = wezterm.font('Iosevka NF'),
+    font_size = 14,
     cursor_blink_rate = 0,
     enable_tab_bar = false,
     color_scheme = theme,
