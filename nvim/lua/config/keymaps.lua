@@ -12,8 +12,12 @@ end, { desc = 'Hide highlighting after searching', silent = true })
 -- Desactivar el espacio en normal y visual
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+-- Atajos para usar neovim ignorando mi distribución de teclado
+vim.keymap.set('n', 'ü', '[', { remap = true })
+vim.keymap.set('n', '+', ']', { remap = true })
+
 -- Atajos globales de diagnósticos
-vim.keymap.set('n', '(d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ')d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>ds', vim.diagnostic.setloclist)
