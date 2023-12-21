@@ -135,7 +135,7 @@
       {
         "name": "onlyoffice",
         "commands": [
-          "sed -i s|UITheme2=.*|UITheme2=theme-%background%| %path%"
+          "sed -i s|UITheme=.*|UITheme=theme-%background%| %path%"
         ]
       }
     ],
@@ -185,7 +185,7 @@
       {
         "name": "neovim",
         "commands": [
-          "sed -i \"s|\\(vim\\.o\\.background = \\).*|\\1'%background%'|\" %path%",
+          "sed -i \"s|\\(theme = \\).*|\\1'%theme%'|\" %path%",
           "bash -c \"for i in $(ls ${XDG_RUNTIME_DIR}/nvim.*.0); do nvim --server $i --remote-send ':colorscheme %theme%\u003cCR\u003e'; done\""
         ]
       },
@@ -212,7 +212,7 @@
         "name": "insomnium",
         "commands": [
           "sed -i 's|\"lightTheme\":\"[^\"]*\"|\"lightTheme\":\"%themes.light.%theme%%\"|' %path%",
-          "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%%themes.dark.%theme%%\"|' %path%"
+          "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%themes.dark.%theme%%\"|' %path%"
         ]
       }
     ]
