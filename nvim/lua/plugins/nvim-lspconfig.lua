@@ -7,7 +7,7 @@ return {
   },
   config = function()
     local servers = { 'tsserver', 'clangd', 'gopls', 'pyright', 'rust_analyzer', 'r_language_server', 'dockerls',
-      'docker_compose_language_service', 'bashls', 'cssls', 'lua_ls', 'html', 'jsonls' }
+      'docker_compose_language_service', 'bashls', 'cssls', 'lua_ls', 'html', 'jsonls', 'svelte' }
     for _, lsp in ipairs(servers) do
       local opts = {
         on_attach = function(_, bufnr)
