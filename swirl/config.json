@@ -15,7 +15,7 @@
       },
       "keyboard": "pro",
       "shortcut": "pro",
-      "taskbar": "pro",
+      "taskbar": "default",
       "theme": "catppuccin"
     },
     "applications": {
@@ -44,8 +44,8 @@
           "pro": "pro -option caps:swapescape"
         },
         "shortcuts": {
-          "default": "kc() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kd \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\"; kd \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\"; kd \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_launch\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"Meta+$i,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"Meta+0,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 5`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Ctrl+F$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done",
-          "pro": "kc() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig5 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kc \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\" \"0\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\" \"Meta+B,none,Google Chrome\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_k_friendly_name\" \"Google Chrome\"; kc \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_launch\" \"Meta+T,none,WezTerm\"; kc \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_k_friendly_name\" \"WezTerm\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"none,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"none,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 5`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Meta+$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 1\" \"Meta+!,none,Ventana al escritorio 1\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 2\" \"Meta+\\\",none,Ventana al escritorio 2\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 3\" \"Meta+#,none,Ventana al escritorio 3\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 4\" \"Meta+$,none,Ventana al escritorio 4\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 5\" \"Meta+%,none,Ventana al escritorio 5\""
+          "default": "kc() { kwriteconfig6 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig6 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kd \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\"; kd \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\"; kd \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_launch\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"Meta+$i,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"Meta+0,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 6`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Ctrl+F$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done",
+          "pro": "kc() { kwriteconfig6 --file \"$1\" --group \"$2\" --key \"$3\" $4; }; kd() { kwriteconfig6 --file \"$1\" --group \"$2\" --key \"$3\" --delete; }; kc \"kdeglobals\" \"KDE\" \"AnimationDurationFactor\" \"0\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_launch\" \"Meta+B,none,Google Chrome\"; kc \"kglobalshortcutsrc\" \"google-chrome.desktop\" \"_k_friendly_name\" \"Google Chrome\"; kc \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_launch\" \"Meta+T,none,WezTerm\"; kc \"kglobalshortcutsrc\" \"org.wezfurlong.wezterm.desktop\" \"_k_friendly_name\" \"WezTerm\"; for i in `seq 9`; do kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry $i\" \"none,Meta+$i,Activar la entrada $i del gestor de tareas\"; done; kc \"kglobalshortcutsrc\" \"plasmashell\" \"activate task manager entry 10\" \"none,Meta+0,Activar la entrada 10 del gestor de tareas\"; for i in `seq 6`; do kc \"kglobalshortcutsrc\" \"kwin\" \"Switch to Desktop $i\" \"Meta+$i,Ctrl+F$i,Cambiar al escritorio $i\"; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop $i\" \"none,none,Ventana al escritorio $i\"; done; kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 1\" \"Meta+!,none,Ventana al escritorio 1\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 2\" \"Meta+\\\",none,Ventana al escritorio 2\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 3\" \"Meta+#,none,Ventana al escritorio 3\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 4\" \"Meta+$,none,Ventana al escritorio 4\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 5\" \"Meta+%,none,Ventana al escritorio 5\";kc \"kglobalshortcutsrc\" \"kwin\" \"Window to Desktop 6\" \"Meta+\u0026,none,Ventana al escritorio 6\""
         },
         "slides": {
           "default": "--delete",
@@ -166,8 +166,7 @@
         "name": "kde",
         "commands": [
           "bash -c '%shortcuts.%shortcut%%'",
-          "qdbus org.kde.KWin /KWin reconfigure",
-          "killall kglobalaccel5"
+          "systemctl --user restart plasma-kglobalaccel.service"
         ]
       }
     ],
