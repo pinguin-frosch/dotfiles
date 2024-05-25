@@ -4,6 +4,7 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim' },
   cmd = 'Telescope',
   keys = {
+    { '<Leader>sd', '<Cmd>Telescope diagnostics<CR>', desc = 'Search diagnostics in workspace' },
     { '<Leader>sf', '<Cmd>Telescope find_files<CR>', desc = 'Search files' },
     { '<Leader>sg', '<Cmd>Telescope live_grep<CR>', desc = 'Search by Grep' },
     { '<Leader>ss', '<Cmd>Telescope lsp_document_symbols<CR>', desc = 'Search symbols in buffer' },

@@ -1,8 +1,7 @@
 local M = {}
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   require('lsp.lsp').setup_keymaps(bufnr)
-  client.server_capabilities.semanticTokensProvider = nil
 end
 
 M.opts = {
