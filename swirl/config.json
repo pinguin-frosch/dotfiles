@@ -15,7 +15,6 @@
       },
       "keyboard": "pro",
       "shortcut": "pro",
-      "taskbar": "default",
       "theme": "catppuccin"
     },
     "applications": {
@@ -50,10 +49,6 @@
         "slides": {
           "default": "--delete",
           "pro": "false"
-        },
-        "taskbars": {
-          "default": "panels().map(p=\u003ep.remove());desktops().map(d=\u003ed.widgets().map(w=\u003ew.remove()));let p=new Panel;p.location='bottom';p.height=2*Math.floor(gridUnit*2.3/2);let m=p.addWidget('org.kde.plasma.kickoff');m.currentConfigGroup=['Shortcuts'];m.writeConfig('global','Alt+F1');p.addWidget('org.kde.plasma.pager');let t=p.addWidget('org.kde.plasma.icontasks');t.currentConfigGroup=['General'];t.writeConfig('launchers',['applications:org.wezfurlong.wezterm.desktop','applications:google-chrome.desktop','applications:org.kde.dolphin.desktop']);p.addWidget('org.kde.plasma.marginsseparator');p.addWidget('org.kde.plasma.systemtray');c=p.addWidget('org.kde.plasma.digitalclock');c.currentConfigGroup=['Appearance'];c.writeConfig('showWeekNumbers',!0);p.addWidget('org.kde.plasma.showdesktop')",
-          "pro": "panels().map(p=\u003ep.remove());desktops().map(d=\u003e{d.widgets().map(w=\u003ew.remove());let s=desktopById(d.addWidget('org.kde.plasma.systemtray',0,1010,500,70).readConfig('SystrayContainmentId'));s.currentConfigGroup=['General'];s.writeConfig('showAllItems',true);s.writeConfig('iconSpacing',1);c=d.addWidget('org.kde.plasma.digitalclock',1620,1010,300,70);c.writeConfig('UserBackgroundHints','StandardBackground');c.currentConfigGroup=['Appearance'];c.writeConfig('showSeconds',true);c.writeConfig('dateDisplayFormat','BesideTime');c.writeConfig('showWeekNumbers',true)});"
         }
       },
       "neovim": {
@@ -167,16 +162,6 @@
         "commands": [
           "bash -c '%shortcuts.%shortcut%%'",
           "systemctl --user restart plasma-kglobalaccel.service"
-        ]
-      }
-    ],
-    "taskbar": [
-      {
-        "name": "kde",
-        "commands": [
-          "qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript \"%taskbars.%taskbar%%\"",
-          "kwriteconfig5 --file 'kwinrc' --group 'Plugins' --key 'slideEnabled' '%slides.%taskbar%%'",
-          "qdbus org.kde.KWin /KWin reconfigure"
         ]
       }
     ],
