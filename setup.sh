@@ -8,7 +8,7 @@ usage() {
 }
 
 apply() {
-    stow --target=${XDG_CONFIG_HOME:-$HOME/.config} "$1" . --ignore="^setup.sh"
+    stow --target=${XDG_CONFIG_HOME:-$HOME/.config} "$1" . --ignore="^setup.sh" --ignore="^env.sh"
 }
 
 if [ $# -ne 1 ]; then
