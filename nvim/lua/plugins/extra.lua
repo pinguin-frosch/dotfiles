@@ -11,7 +11,8 @@ return {
     'brenoprata10/nvim-highlight-colors',
     cmd = 'HighlightColorsToggle',
     keys = {
-      { '<Leader>th', '<Cmd>HighlightColorsToggle<CR>', desc = 'Toggle highlight colors' },
-    }
+      { '<Leader>th', '<Cmd>HighlightColors Toggle<CR>', desc = 'Toggle highlight colors' },
+    },
+    config = true
   }
 }

@@ -7,5 +7,12 @@ return {
   keys = {
     { '<Leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Open File Explorer' }
   },
-  config = true
+  config = function()
+    require('nvim-tree').setup {
+      view = {
+        width = 40,
+        side = "right"
+      }
+    }
+  end
 }
