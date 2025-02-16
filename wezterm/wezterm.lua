@@ -5,6 +5,7 @@ local theme = 'catppuccin-light'
 local config = {
     font = wezterm.font('Iosevka NF'),
     font_size = 14,
+    max_fps = 10,
     cursor_blink_rate = 0,
     enable_tab_bar = false,
     color_scheme = theme,
