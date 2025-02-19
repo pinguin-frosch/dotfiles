@@ -5,7 +5,7 @@ return {
   },
   cmd = 'NvimTreeToggle',
   keys = {
-    { '<Leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Open File Explorer' }
+    { '<leader>e', '<Cmd>NvimTreeToggle<CR>', desc = 'Open File Explorer' }
   },
   config = function()
     require('nvim-tree').setup {

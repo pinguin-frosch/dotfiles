@@ -23,6 +23,6 @@ return {
     end, { silent = true })
     vim.keymap.set('n', '<leader>bc', function()
       vim.cmd('confirm bdelete')
-    end, { silent = true })
+    end, { silent = true, desc = 'Close Buffer' })
   end,
 }

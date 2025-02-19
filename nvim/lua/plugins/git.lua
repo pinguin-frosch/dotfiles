@@ -3,12 +3,20 @@ return {
     'lewis6991/gitsigns.nvim',
     cmd = 'Gitsigns',
     event = { 'BufRead', 'BufNewFile' },
-    keys = {
-      { '[h', '<Cmd>Gitsigns prev_hunk<CR>', 'Go to previous hunk' },
-      { ']h', '<Cmd>Gitsigns next_hunk<CR>', 'Go to next hunk' },
-      { '<Leader>gd', '<Cmd>Gitsigns diffthis<CR>', 'Diff current file' },
-      { '<Leader>gb', '<Cmd>Gitsigns blame_line<CR>', 'Blame current line' },
-    },
-    config = true
+    config = function()
+      require('gitsigns').setup({
+        on_attach = function()
+          local gitsigns = require('gitsigns')
+          vim.keymap.set('n', '[h', function()
+            gitsigns.nav_hunk('prev')
+          end, { desc = 'Previous Hunk' })
+          vim.keymap.set('n', ']h', function()
+            gitsigns.nav_hunk('next')
+          end, { desc = 'Next Hunk' })
+          vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { desc = 'Diff Current File' })
+          vim.keymap.set('n', '<leader>gb', gitsigns.blame_line, { desc = 'Blame Current Line' })
+        end
+      })
+    end,
   }
 }
