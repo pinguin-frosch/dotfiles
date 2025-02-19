@@ -9,10 +9,16 @@ return {
   },
   {
     'brenoprata10/nvim-highlight-colors',
-    cmd = 'HighlightColorsToggle',
-    keys = {
-      { '<leader>th', '<Cmd>HighlightColors Toggle<CR>', desc = 'Highlight Colors' },
-    },
-    config = true
-  }
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-highlight-colors').setup()
+      local colors = require('nvim-highlight-colors')
+      colors.turnOff()
+      vim.keymap.set('n', '<leader>th', function()
+        colors.toggle()
+        local enabled = colors.is_active()
+        print('Highlight Colors ' .. (enabled and 'Enabled' or 'Disabled'))
+      end, { desc = 'Highlight Colors' })
+    end,
+  },
 }
