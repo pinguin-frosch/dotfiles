@@ -7,7 +7,7 @@ return {
   },
   config = function()
     vim.keymap.set('n', '<leader>lsr', '<Cmd>LspRestart<CR>', { desc = 'Restart LSP Server' })
-    local servers = { 'ts_ls', 'clangd', 'gopls', 'pyright', 'rust_analyzer', 'r_language_server', 'dockerls',
+    local servers = { 'ts_ls', 'clangd', 'gopls', 'pyright', 'rust_analyzer', 'dockerls',
       'docker_compose_language_service', 'bashls', 'cssls', 'lua_ls', 'html', 'jsonls', 'svelte' }
     for _, lsp in ipairs(servers) do
       local opts = {
