@@ -11,6 +11,7 @@ return {
   },
   config = function()
     local builtin = require('telescope.builtin')
+    vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Buffers' })
     vim.keymap.set('n', '<leader>sc', builtin.git_status, { desc = 'Changed Git Files' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Diagnostics In Workspace' })
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Files' })

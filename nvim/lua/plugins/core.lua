@@ -10,11 +10,6 @@ return {
       config = true
    },
    {
-      'numToStr/Comment.nvim',
-      keys = { 'gc', 'gb', { 'gc', mode = 'v' }, { 'gb', mode = 'v' } },
-      config = true
-   },
-   {
       'kylechui/nvim-surround',
       keys = { 'cs', 'ds', 'ys' },
       config = true

@@ -19,3 +19,8 @@ vim.keymap.set('n', '+', ']', { remap = true })
 -- Atajos globales de diagnósticos
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous Diagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
+
+-- Atajos de buffers
+vim.keymap.set('n', '[b', vim.cmd.bprevious, { desc = 'Previous Buffer' })
+vim.keymap.set('n', ']b', vim.cmd.bnext, { desc = 'Next Buffer' })
+vim.keymap.set('n', '<leader>bd', vim.cmd.bdelete, { desc = 'Delete Buffer' })
