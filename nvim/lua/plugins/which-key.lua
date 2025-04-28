@@ -11,6 +11,7 @@ return {
     wk.add({
       { '<leader>b',  group = 'Buffers' },
       { '<leader>g',  group = 'Git' },
+      { '<leader>h',  group = 'Harpoon' },
       { '<leader>l',  group = 'LSP' },
       { '<leader>ld', group = 'Diagnostics' },
       { '<leader>ls', group = 'Server' },
