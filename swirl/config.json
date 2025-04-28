@@ -18,21 +18,6 @@
       "theme": "catppuccin"
     },
     "applications": {
-      "insomnium": {
-        "path": "~/.config/Insomnium/insomnia.Settings.db",
-        "themes": {
-          "dark": {
-            "ayu": "ayu-dark",
-            "catppuccin": "catppuccin-mocha",
-            "onedark": "one-dark"
-          },
-          "light": {
-            "ayu": "ayu-light",
-            "catppuccin": "catppuccin-latte",
-            "onedark": "one-light"
-          }
-        }
-      },
       "kde": {
         "backgrounds": {
           "dark": "org.kde.breezedark.desktop",
@@ -190,13 +175,6 @@
         "name": "vscode",
         "commands": [
           "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%themes.%background%.%theme%%\",|' %path%"
-        ]
-      },
-      {
-        "name": "insomnium",
-        "commands": [
-          "sed -i 's|\"lightTheme\":\"[^\"]*\"|\"lightTheme\":\"%themes.light.%theme%%\"|' %path%",
-          "sed -i 's|\"darkTheme\":\"[^\"]*\"|\"darkTheme\":\"%themes.dark.%theme%%\"|' %path%"
         ]
       }
     ]
