@@ -3,13 +3,33 @@ return {
   'catppuccin/nvim',
   'Shatur/neovim-ayu',
   {
+    'echasnovski/mini.align',
+    keys = { 'ga', 'gA' },
+    config = true
+  },
+  {
+    'echasnovski/mini.pairs',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = true
+  },
+  {
+    'echasnovski/mini.surround',
+    config = true,
+    keys = { 'sa', 'sd', 'sf', 'sF', 'sh', 'sr' }
+  },
+  {
+    'NMAC427/guess-indent.nvim',
+    event = { 'BufReadPre' },
+    config = true,
+  },
+  {
     'lunarvim/bigfile.nvim',
     config = true,
     event = { 'BufReadPre' },
   },
   {
     'brenoprata10/nvim-highlight-colors',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('nvim-highlight-colors').setup()
       local colors = require('nvim-highlight-colors')
@@ -25,5 +45,5 @@ return {
     "echasnovski/mini.icons",
     version = "*",
     config = true
-  }
+  },
 }
