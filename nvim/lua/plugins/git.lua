@@ -15,6 +15,7 @@ return {
           end, { desc = 'Next Hunk' })
           vim.keymap.set('n', '<leader>gd', gitsigns.diffthis, { desc = 'Diff Current File' })
           vim.keymap.set('n', '<leader>gb', gitsigns.blame_line, { desc = 'Blame Current Line' })
+          vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'Preview Current Hunk' })
         end
       })
     end,
