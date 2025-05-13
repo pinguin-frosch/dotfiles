@@ -21,4 +21,9 @@ return {
       end, { desc = 'Highlight Colors' })
     end,
   },
+  {
+    "echasnovski/mini.icons",
+    version = "*",
+    config = true
+  }
 }

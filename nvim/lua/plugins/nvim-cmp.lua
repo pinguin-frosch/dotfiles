@@ -11,9 +11,6 @@ return {
   opts = function()
     local cmp = require('cmp')
 
-    -- Agregar paréntesis al completar funciones u otros
-    cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
-
     return {
       snippet = {
         expand = function(args)

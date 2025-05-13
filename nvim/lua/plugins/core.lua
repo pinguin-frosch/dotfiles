@@ -1,18 +1,17 @@
 return {
    {
       'echasnovski/mini.align',
-      keys = { 'ga', 'gA', { 'ga', mode = 'v' }, { 'gA', mode = 'v' } },
+      keys = { 'ga', 'gA' },
       config = true
    },
    {
-      'windwp/nvim-autopairs',
-      event = 'InsertEnter',
+      'echasnovski/mini.pairs',
       config = true
    },
    {
-      'kylechui/nvim-surround',
-      keys = { 'cs', 'ds', 'ys' },
-      config = true
+      'echasnovski/mini.surround',
+      config = true,
+      keys = { 'sa', 'sd', 'sf', 'sF', 'sh', 'sr' }
    },
    {
       'NMAC427/guess-indent.nvim',
