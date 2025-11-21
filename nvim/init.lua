@@ -26,5 +26,7 @@ require('lazy').setup('plugins', {
   }
 })
 
+require('core.lsp')
+
 -- Cambiar el tema, tiene que ser después de cargar los plugins
 vim.cmd('colorscheme ' .. theme)

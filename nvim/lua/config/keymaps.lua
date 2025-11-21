@@ -22,3 +22,10 @@ vim.keymap.set('n', '<leader>bd', vim.cmd.bdelete, { desc = 'Delete Buffer' })
 -- Atajos de movimiento
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
+
+-- Desactivar coloreado luego de completar snippets
+vim.keymap.set('n', '<Esc>', function()
+  if vim.snippet then
+    vim.snippet.stop()
+  end
+end, { desc = 'Hide highlighting after snippets' })
