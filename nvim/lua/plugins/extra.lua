@@ -3,16 +3,6 @@ return {
   'catppuccin/nvim',
   'Shatur/neovim-ayu',
   {
-    'echasnovski/mini.align',
-    keys = { 'ga', 'gA' },
-    config = true
-  },
-  {
-    'echasnovski/mini.pairs',
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = true
-  },
-  {
     'echasnovski/mini.surround',
     config = true,
     keys = { 'sa', 'sd', 'sf', 'sF', 'sh', 'sr' }

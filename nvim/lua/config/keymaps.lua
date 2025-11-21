@@ -4,11 +4,6 @@ vim.keymap.set('n', '<leader>tw', function()
   print('Word Wrap ' .. (vim.o.wrap and 'Enabled' or 'Disabled'))
 end, { desc = 'Word Wrap' })
 
--- Atajo para desactivar el coloreado después de buscar
-vim.keymap.set('n', '<Esc>', function()
-  vim.cmd('nohl')
-end, { desc = 'Hide highlighting after searching', silent = true })
-
 -- Desactivar el espacio en normal y visual
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -23,9 +18,13 @@ vim.keymap.set('n', '<leader>bd', vim.cmd.bdelete, { desc = 'Delete Buffer' })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
 
--- Desactivar coloreado luego de completar snippets
+-- Desactivar coloreado luego de completar snippets y buscar
 vim.keymap.set('n', '<Esc>', function()
   if vim.snippet then
     vim.snippet.stop()
   end
-end, { desc = 'Hide highlighting after snippets' })
+  vim.cmd('nohl')
+end, { desc = 'Hide highlightings' })
+
+-- Atajos de diagnosticos
+vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = 'Open Floating Window' })

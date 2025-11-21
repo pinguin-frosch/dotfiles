@@ -27,5 +27,11 @@ return {
         vim.keymap.set("n", "<leader>hg", function()
             harpoon:list():select(5)
         end, { desc = "Open Harpoon File 5" })
+        vim.keymap.set('n', '<leader>hr', function()
+            local list = harpoon:list()
+            for i, _ in ipairs(list.items) do
+                harpoon:list():remove_at(i)
+            end
+        end, { desc = 'Reset Harpoon List' })
     end
 }
