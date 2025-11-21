@@ -1,0 +1,35 @@
+return {
+  'nvim-mini/mini.pick',
+  version = '*',
+  dependencies = { 'nvim-mini/mini.extra', version = '*' },
+  config = function()
+    local pick = require('mini.pick')
+    local extra = require('mini.extra')
+    pick.setup()
+    extra.setup()
+    vim.keymap.set('n', '<leader>sf', function()
+      pick.builtin.files({ tool = 'rg' })
+    end, { desc = 'Search Files' })
+    vim.keymap.set('n', '<leader>sb', function()
+      pick.builtin.buffers()
+    end, { desc = 'Search Buffers' })
+    vim.keymap.set('n', '<leader>sg', function()
+      pick.builtin.grep_live({ tool = 'rg' })
+    end, { desc = 'Search Files by Grep' })
+    vim.keymap.set('n', '<leader>sr', function()
+      pick.builtin.resume()
+    end, { desc = 'Resume Search' })
+    vim.keymap.set('n', '<leader>sd', function()
+      extra.pickers.diagnostic()
+    end, { desc = 'Search Diagnostics' })
+    vim.keymap.set('n', '<leader>sc', function()
+      extra.pickers.git_files({ scope = 'modified' })
+    end, { desc = 'Search Git Changes' })
+    vim.keymap.set('n', '<leader>sls', function()
+      extra.pickers.lsp({ scope = 'document_symbol' })
+    end, { desc = 'Search Lsp Symbols' })
+    vim.keymap.set('n', '<leader>slS', function()
+      extra.pickers.lsp({ scope = 'workspace_symbol' })
+    end, { desc = 'Search Lsp Workspace Symbols' })
+  end,
+}
