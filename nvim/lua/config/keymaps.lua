@@ -18,13 +18,10 @@ vim.keymap.set('n', '<leader>bd', vim.cmd.bdelete, { desc = 'Delete Buffer' })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
 
--- Desactivar coloreado luego de completar snippets y buscar
+-- Desactivar coloreado luego de buscar
 vim.keymap.set('n', '<Esc>', function()
-  if vim.snippet then
-    vim.snippet.stop()
-  end
   vim.cmd('nohl')
-end, { desc = 'Hide highlightings' })
+end, { desc = 'Hide highlight after searching' })
 
 -- Atajos de diagnosticos
 vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = 'Open Floating Window' })
