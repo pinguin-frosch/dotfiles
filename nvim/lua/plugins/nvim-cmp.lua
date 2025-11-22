@@ -9,7 +9,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local cmp = require('cmp')
-    local icons = require('icons')
+    local icons = require('mini.icons')
     local luasnip = require('luasnip')
     cmp.setup({
       snippet = {
@@ -29,7 +29,9 @@ return {
       formatting = {
         fields = { 'kind', 'abbr' },
         format = function(_, vim_item)
-          vim_item.kind = icons.get_lsp_icon(vim_item.kind)
+          local icon, hl = icons.get('lsp', vim_item.kind)
+          vim_item.kind = icon
+          vim_item.kind_hl_group = hl
           return vim_item
         end,
       },
@@ -52,6 +54,8 @@ return {
             fallback()
           elseif luasnip.locally_jumpable(1) then
             luasnip.jump(1)
+          else
+            fallback()
           end
         end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
@@ -59,6 +63,8 @@ return {
             fallback()
           elseif luasnip.locally_jumpable(-1) then
             luasnip.jump(-1)
+          else
+            fallback()
           end
         end, { 'i', 's' }),
       }),
