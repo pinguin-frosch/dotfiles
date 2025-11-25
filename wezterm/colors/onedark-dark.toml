@@ -2,8 +2,8 @@
 background = '#282c34'
 foreground = '#abb2bf'
 ansi = [
-  '#282c34',
-  '#e06c75',
+  '#181a1f',
+  '#e86671',
   '#98c379',
   '#e5c07b',
   '#61afef',
@@ -12,14 +12,14 @@ ansi = [
   '#abb2bf',
 ]
 brights = [
-  '#3f3f3f',
-  '#e06c75',
+  '#5c6370',
+  '#e86671',
   '#98c379',
   '#e5c07b',
   '#61afef',
   '#c678dd',
   '#56b6c2',
-  '#bfc5ce',
+  '#abb2bf',
 ]
 
 [metadata]

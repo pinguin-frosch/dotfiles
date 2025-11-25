@@ -11,6 +11,7 @@ To get the color values for wezterm and tmux:
 #!/usr/bin/env python3
 for i in range(30, 37 + 1):
     print("\033[%dm█\033[%dm█" % (i, i + 60))
+print("█")
 ```
 
 - Use a color picker program and copy each color

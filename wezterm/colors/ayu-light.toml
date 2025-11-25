@@ -1,25 +1,25 @@
 [colors]
-background = '#fcfcfc'
+background = '#f8f9fa'
 foreground = '#5c6166'
 ansi = [
-  '#010101',
-  '#e7666a',
-  '#80ab24',
-  '#eba54d',
-  '#4196df',
-  '#9870c3',
-  '#51b891',
-  '#c1c1c1',
+  '#f8f9fa',
+  '#f07171',
+  '#86b300',
+  '#ffaa33',
+  '#55b4d4',
+  '#a37acc',
+  '#4cbf99',
+  '#5c6166',
 ]
 brights = [
-  '#343434',
-  '#ee9295',
-  '#9fd32f',
-  '#f0bc7b',
-  '#6daee6',
-  '#b294d2',
-  '#75c7a8',
-  '#dbdbdb',
+  '#8a9199',
+  '#e65050',
+  '#86b300',
+  '#ffaa33',
+  '#55b4d4',
+  '#a37acc',
+  '#4cbf99',
+  '#abadb1',
 ]
 
 [metadata]
