@@ -2,6 +2,8 @@ return {
   'navarasu/onedark.nvim',
   'catppuccin/nvim',
   'Shatur/neovim-ayu',
+  'nyoom-engineering/oxocarbon.nvim',
+  'folke/tokyonight.nvim',
   {
     'echasnovski/mini.surround',
     config = true,

@@ -1,0 +1,27 @@
+[colors]
+background = '#ffffff'
+foreground = '#525252'
+ansi = [
+  '#f2f2f2',
+  '#0f62fe',
+  '#be95ff',
+  '#42be65',
+  '#ee5396',
+  '#ffab91',
+  '#ff7eb6',
+  '#90a4ae',
+]
+brights = [
+  '#161616',
+  '#0f62fe',
+  '#be95ff',
+  '#42be65',
+  '#ee5396',
+  '#ffab91',
+  '#08bdba',
+  '#525252',
+]
+
+[metadata]
+author = 'PinguinFrosch'
+name = 'oxocarbon-light'
