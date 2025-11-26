@@ -1,6 +1,6 @@
 [colors]
 background = '#161616'
-foreground = '#ffffff'
+foreground = '#d0d0d0'
 ansi = [
   '#262626',
   '#33b1ff',
