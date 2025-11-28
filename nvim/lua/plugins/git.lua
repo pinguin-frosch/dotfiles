@@ -35,6 +35,10 @@ return {
     },
     keys = {
       { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' }
-    }
+    },
+    config = function()
+      vim.g.lazygit_floating_window_scaling_factor = 1
+      vim.g.lazygit_floating_window_border_chars = 'none'
+    end,
   }
 }
