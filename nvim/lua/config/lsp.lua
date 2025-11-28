@@ -16,7 +16,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local nmap = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { buffer = ev.buf, desc = desc })
     end
-    nmap('<leader>lr', vim.lsp.buf.rename, 'Rename')
+    nmap('<leader>lr', function()
+      vim.lsp.buf.rename()
+      vim.cmd('silent! wa')
+    end, 'Rename')
     nmap('<leader>la', vim.lsp.buf.code_action, 'Code Actions')
     nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
     nmap('gr', function()
