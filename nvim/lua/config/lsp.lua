@@ -1,5 +1,5 @@
 local servers = { 'ts_ls', 'clangd', 'gopls', 'pyright', 'rust_analyzer', 'dockerls', 'docker_compose_language_service',
-  'bashls', 'cssls', 'html', 'jsonls', 'svelte', 'lua_ls' }
+  'bashls', 'cssls', 'html', 'jsonls', 'svelte', 'lua_ls', 'emmet_language_server' }
 vim.lsp.enable(servers)
 
 -- Quitar atajos por defecto de lsp
