@@ -9,8 +9,15 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local cmp = require('cmp')
+    local types = require('cmp.types')
     local icons = require('mini.icons')
     local luasnip = require('luasnip')
+
+    local function deprioritize_lsp_snippets(entry1, entry2)
+      if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then return false end
+      if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then return true end
+    end
+
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -23,6 +30,22 @@ return {
         { name = 'buffer' },
         { name = 'path' },
       }),
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          deprioritize_lsp_snippets,
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.scopes,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
       completion = {
         completeopt = 'menu,menuone,preview',
       },
