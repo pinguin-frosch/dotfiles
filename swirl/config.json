@@ -2,7 +2,7 @@
   "variables": {
     "global": {
       "background": "light",
-      "font": "iosevka",
+      "font": "pragmasevka",
       "fonts": {
         "agave": "Agave Nerd Font",
         "cascadia": "CaskaydiaCove NF SemiLight",
@@ -11,7 +11,8 @@
         "inconsolata": "Inconsolata Nerd Font",
         "iosevka": "Iosevka NF",
         "jetbrains": "JetBrainsMono Nerd Font",
-        "monoid": "Monoid Nerd Font"
+        "monoid": "Monoid Nerd Font",
+        "pragmasevka": "Pragmasevka Nerd Font"
       },
       "theme": "catppuccin"
     },
