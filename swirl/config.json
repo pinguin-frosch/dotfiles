@@ -17,6 +17,9 @@
       "theme": "catppuccin"
     },
     "applications": {
+      "ghostty": {
+        "path": "~/.config/ghostty/config.ghostty"
+      },
       "kde": {
         "backgrounds": {
           "dark": "org.kde.breezedark.desktop",
@@ -53,9 +56,6 @@
             "onedark": "Atom One Light"
           }
         }
-      },
-      "wezterm": {
-        "path": "~/.config/wezterm/wezterm.lua"
       }
     }
   },
@@ -66,12 +66,6 @@
         "commands": [
           "sed -i \"s|\\(vim\\.o\\.background = \\).*|\\1'%background%'|\" %path%",
           "bash -c \"for i in $(ls ${XDG_RUNTIME_DIR}/nvim.*.0); do nvim --server $i --remote-send ':set background=%background%\u003cCR\u003e'; done\""
-        ]
-      },
-      {
-        "name": "wezterm",
-        "commands": [
-          "sed -i \"s/theme = '.*'/theme = '%theme%-%background%'/\" %path%"
         ]
       },
       {
@@ -108,15 +102,15 @@
     ],
     "font": [
       {
-        "name": "wezterm",
-        "commands": [
-          "sed -i \"s|\\(wezterm\\.font('\\).*')|\\1%fonts.%font%%')|\" %path%"
-        ]
-      },
-      {
         "name": "vscode",
         "commands": [
           "sed -i 's|\\(\"editor\\.fontFamily\": \"\\).*|\\1%fonts.%font%%\",|' %path%"
+        ]
+      },
+      {
+        "name": "ghostty",
+        "commands": [
+          "sed -i 's|\\(font-family = \\).*|\\1%fonts.%font%%|' %path%"
         ]
       }
     ],
@@ -126,12 +120,6 @@
         "commands": [
           "sed -i \"s|\\(theme = \\).*|\\1'%theme%'|\" %path%",
           "bash -c \"for i in $(ls ${XDG_RUNTIME_DIR}/nvim.*.0); do nvim --server $i --remote-send ':colorscheme %theme%\u003cCR\u003e'; done\""
-        ]
-      },
-      {
-        "name": "wezterm",
-        "commands": [
-          "sed -i \"s/theme = '.*'/theme = '%theme%-%background%'/\" %path%"
         ]
       },
       {
@@ -145,6 +133,12 @@
         "name": "vscode",
         "commands": [
           "sed -i 's|\"workbench.colorTheme\": .*|\"workbench.colorTheme\": \"%themes.%background%.%theme%%\",|' %path%"
+        ]
+      },
+      {
+        "name": "ghostty",
+        "commands": [
+          "sed -i 's|^\\(theme = \\).*|\\1light:%theme%-light,dark:%theme%-dark|' %path%"
         ]
       }
     ]
