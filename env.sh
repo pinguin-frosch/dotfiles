@@ -16,3 +16,4 @@ PYENV_ROOT=$XDG_DATA_HOME/pyenv
 EDITOR=nvim
 PATH=$PYENV_ROOT/bin:$HOME/.local/bin:$GOPATH/bin:$CARGO_HOME/bin:$PATH
 SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+GTK_IM_MODULE=simple

@@ -1,5 +1,7 @@
+confirm-close-surface = false
 copy-on-select = false
 cursor-color = cell-foreground
+cursor-text = cell-background
 font-family = Pragmasevka Nerd Font
 font-size = 15
 fullscreen = true
