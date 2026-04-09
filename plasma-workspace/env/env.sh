@@ -1,1 +1,1 @@
-export $(envsubst < /home/gabriel/Programming/dotfiles/env.sh)
+export $(envsubst < $HOME/Programming/dotfiles/env.sh)
