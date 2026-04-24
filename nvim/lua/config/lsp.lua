@@ -8,6 +8,7 @@ vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'grn')
 vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'grt')
+vim.keymap.del('n', 'grx')
 vim.keymap.del('n', 'gO')
 
 ---@alias FormatFnFactory fun(args: vim.api.keyset.create_autocmd.callback_args): function
