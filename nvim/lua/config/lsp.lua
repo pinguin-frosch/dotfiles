@@ -32,6 +32,25 @@ local language_format_functions = {
       vim.lsp.buf.format({ async = false })
     end
   end,
+  typescript = function(args)
+    local filepath = vim.api.nvim_buf_get_name(args.buf)
+    local root_markers = { 'svelte.config.js' }
+    local found_root = vim.fs.find(root_markers, {
+      upward = true,
+      path = vim.fs.dirname(filepath)
+    })
+    return function()
+      if #found_root > 0 then
+        local current_lines = vim.api.nvim_buf_get_lines(args.buf, 0, -1, false)
+        local formatted_lines = vim.fn.systemlist({ 'prettierd', filepath }, current_lines)
+        if vim.v.shell_error == 0 then
+          vim.api.nvim_buf_set_lines(args.buf, 0, -1, false, formatted_lines)
+        end
+      else
+        vim.lsp.buf.format({ async = false })
+      end
+    end
+  end,
 }
 
 ---@param args vim.api.keyset.create_autocmd.callback_args
